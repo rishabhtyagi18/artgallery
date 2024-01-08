@@ -131,7 +131,7 @@
 }
 
 .summary-item-wrapper {
-    width: 362px;
+    width: fit-content;
     top: 0px;
     left: 0px;
     height: 347px;
@@ -258,14 +258,14 @@
         padding-left: 0;
         margin-right: 0rem;
         margin-left: 0rem;
-        padding-right: 10px;
+        padding-right: 3.3vmax;
         display: block;
         padding-bottom: 0;
         padding-top: 0;
     }
 
     .summary-item-wrapper {
-        width: 500px;
+        /* width: 500px; */
         height: fit-content;
         border-radius: 4px;
         background-color: #010101;
