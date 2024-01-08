@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     background-color: hsla( 0,0%,6.2745098039215685% ,1);
-    margin-top: 94px;
+    margin-top: calc(100% - 77%);
     height: 100%;
     position: fixed;
     z-index: 26;
