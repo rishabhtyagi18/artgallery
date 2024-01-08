@@ -53,7 +53,7 @@ return (
     <>  
         <div className="home-root">
             <div className="home-mob-root">
-                <Carousel showArrows={false} autoPlay={true} infiniteLoop={true} showThumbs={false} showIndicators={false} showStatus={false}>
+                <Carousel showArrows={false} autoPlay={true} infiniteLoop={true} showThumbs={false} showIndicators={false} showStatus={false} emulateTouch={false} swipeable={false}>
                     {mobArr.map((ele, index) => (
                             <div className="section-border" key={index}>
                                 <div className="section-background">
