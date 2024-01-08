@@ -1,0 +1,118 @@
+.container-toast {
+    display: block;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20%;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.46;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    padding-left: 90px;
+  }
+  .container-toast > div {
+    border-radius: 40px;
+    background-color: #5a5a5a;
+    padding: 5px 10px;
+    max-width: 300px;
+    /* width: fit-content; */
+    display: flex;
+    /* justify-content: center; */
+  }
+  .token-img {
+    margin-left: 0rem;
+    margin-right: 0.5rem;
+    margin-top: -2px;
+  }
+  
+  @media screen and (max-width: 360px) and (min-width: 321px) {
+    .container-toast {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: center;
+      position: fixed;
+      bottom: 20%;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.46;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+      padding-left: 0;
+    }
+    .token-img {
+      margin-left: 0;
+    }
+  }
+  
+  @media screen and (max-width: 400px) and (min-width: 375px) {
+    .container-toast {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: center;
+      position: fixed;
+      bottom: 20%;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.46;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+      padding-left: 0;
+    }
+    .token-img {
+      margin-left: 0;
+    }
+  }
+  @media screen and (max-width: 450px) and (min-width: 410px) {
+    .container-toast {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: center;
+      position: fixed;
+      bottom: 20%;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.46;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+      padding-left: 0;
+    }
+    .token-img {
+      margin-left: 0;
+    }
+  }
+  @media screen and (max-width: 320px) {
+    .container-toast {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: center;
+      position: fixed;
+      bottom: 20%;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.46;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+      padding-left: 0;
+    }
+    .token-img {
+      margin-left: 0;
+    }
+  }
+  

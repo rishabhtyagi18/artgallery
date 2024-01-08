@@ -1,0 +1,188 @@
+.mainBar {
+    padding-bottom: 10px;
+}
+
+.mainBarRoot {
+    box-sizing: border-box;
+    justify-content: space-between;
+    /* height: 50px; */
+    font-family: Gilroy, sans-serif;
+    padding: 0 0 0 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: hsla(0, 0%, 0.39215686274509803%, 1);
+    width: -webkit-fill-available;
+    z-index: 10;
+    /* box-shadow:
+      0 4px 5px 0 rgba(0, 0, 0, 0.14),
+      0 1px 10px 0 rgba(0, 0, 0, 0.12),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2); */
+}
+
+.header-announcement-bar-wrapper {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    pointer-events: auto;
+    padding: 12vw;
+    transition: padding 140ms ease-in-out;
+}
+
+.header-navbar-container {
+    position: fixed !important;
+    background-color: hsla( 0,0%,6.2745098039215685% ,1) !important;
+    z-index: 11;
+}
+
+.header-homeroot-props-style {
+    position: fixed;
+    background-color: transparent;
+}
+
+.header-border {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* pointer-events: none; */
+}
+
+.backButton {
+    padding-left: 0.5rem;
+    margin-right: 10px;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    margin-left: 12px;
+}
+
+.header-logo {
+    width: auto;
+    max-width: 100%;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+.cart-icon {
+    height: 25px;
+    width: 25px;
+}
+
+.cart-quantity-root {
+    display: flex;
+    flex: 0 0 75px;
+}
+
+.icon-cart-quantity {
+    padding-left: calc(3px + 25px / 15);
+    position: relative;
+    text-align: center;
+    line-height: 25px;
+    margin-top: -7px;
+}
+
+.cart-quantity-container {
+    color: #fff;
+}
+
+.header-display-desktop {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .header-announcement-bar-wrapper {
+        padding-top: 5vw;
+        padding-bottom: 1vw;
+        padding-left: 4vw;
+        padding-right: 4vw;
+        background-color: hsla( 0,0%,6.2745098039215685% ,1);
+    }
+
+    .header-mobile-section-only {
+        display: none;
+    }
+
+    .header-border {
+        padding: 50px;
+    }
+
+    .header-display-desktop {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .header-element {
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-element a {
+        position: relative;
+        display: block;
+        /* margin: 3vw 5vw; */
+        transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        color: hsla( 0,0%,100% ,1) !important;
+        line-height: 2.5em !important;
+        font-size: 1.2em !important;
+    }
+
+    .header-element-item-active {
+        position: relative;
+        display: inline-block;
+        pointer-events: none;
+        line-height: 2.5em !important;
+        font-size: 1em !important;
+    }
+    
+    :is([aria-current="page"], [aria-current="true"]) .header-element-item-active {
+        background-image: linear-gradient(currentColor,currentColor);
+        background-repeat: repeat-x;
+        background-size: 1px 1px;
+        background-position: 0 100%;
+    }
+
+    .header-cta-connect {
+        transition: transform 600ms cubic-bezier(.4,0,.2,1);
+        transform: translatey(0);
+        font-size: 1.2em;
+        z-index: 10;
+        margin: auto;
+    }
+
+    .header-cta-connect-atag {
+        line-height: normal;
+        border-style: solid;
+        border-width: 0px;
+        padding: 0.55em 1.2525em;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: .02em;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        background-color: hsla( 24.97854077253219,92.82868525896416%,49.2156862745098% ,1);
+        border-color: hsla( 24.97854077253219,92.82868525896416%,49.2156862745098% ,1);
+        display: inline-block;
+        text-align: center;
+        box-sizing: border-box;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .header-homeroot-props-style {
+        position: fixed;
+        background-color: transparent;
+    }
+}

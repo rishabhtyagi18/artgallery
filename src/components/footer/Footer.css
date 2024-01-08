@@ -1,0 +1,220 @@
+.content-wrapper {
+    justify-content: center;
+    padding-right: 6vw;
+    padding-left: 6vw;
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #f26a09;
+}
+
+.content {
+    width: 100%;   
+}
+
+.sqs-block-markdown {
+    clear: none;
+}
+
+.sqs-block {
+    position: relative;
+    height: auto;
+    padding-top: 17px;
+    /* padding-bottom: 17px; */
+    padding-left: 17px;
+    padding-right: 17px;
+}
+
+@media screen and (max-width: 767px) {
+    .sqs-block:first-child {
+        padding-top: 0 !important;
+    }
+    .sqs-block:nth-child(2) {
+        padding-top: 0 !important;
+    }
+    .sqs-block:nth-child(3) {
+        padding-top: 0 !important;
+    }
+
+    .sqs-block:last-child {
+        padding-bottom: 0 !important;
+    }
+}
+
+.sqs-block-markdown .sqs-block-content {
+    position: relative;
+}
+
+h3 {
+    border-bottom: 1px solid #f0f0f0 !important;
+    padding-bottom: 2px !important;
+    text-align: center !important;
+    font-size: 1em !important;
+    color: hsla( 0,0%,100% ,1);
+    line-height: calc(1.4em * (1 + (1 - 1.5)/25));
+}
+
+.markdown-block p {
+    font-size: .9em !important;
+    color: hsla( 0,0%,100% ,1);
+    text-align: center !important;
+    line-height: 1.8em;
+}
+
+
+/* .footer-menu-tablet-seperator {
+    display: none !important
+} */
+
+.footer-menu-tablet-newline {
+    display: none !important;
+}
+
+a {
+    color: #f0f0f0 !important;
+    text-decoration: none;
+}
+
+.email-input {
+    padding: 0.9375rem;
+    font-size: 14px;
+    font-size: .875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: .129px;
+    letter-spacing: .0081rem;
+    text-align: left;
+    color: #4a4a4a;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border: 0.0625rem solid hsla(0,0%,60.8%,.3);
+    overflow: hidden;
+    width: -webkit-fill-available;
+}
+
+.email-input {
+margin: 0 0 20px !important;
+}
+
+.form-wrapper, .form-button-wrapper--align-center {
+    text-align: center;
+}
+
+.sqs-button-element--primary {
+    transition: .1s opacity linear;
+}
+
+.sqs-editable-button {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: normal;
+    padding: 0.75em 1.2525em;
+}
+
+.button {
+    border: 1px solid #f0f0f0 !important;
+    padding: 4px 18px !important;
+    text-transform: uppercase !important;
+    color: #f0f0f0 !important;
+    font-weight: 300 !important;
+    letter-spacing: .02em !important;
+    font-size: 1em !important;
+    background-color: #f26a09 !important;
+    border-radius: 5px;
+}
+
+.horizontalrule-block {
+    padding: 17px 0!important;
+}
+
+.sqs-svg-icon--wrapper {
+    margin: 0 6px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.socialaccountlinks-v2-block {
+    text-align: center;
+    padding-top: 2px !important;
+}
+
+.footer-desktop-view {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .footer-content-desktop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* align-items: center; */
+    }
+
+    .footer-desktop-view {
+        display: block;
+        padding: 0;
+    }
+
+    .footer-mobile-view {
+        display: none;
+    }
+
+    .sqs-block {
+        width: 100%;
+    }
+
+    .footer-sqs-desktop-block {
+        display: block;
+        width: 100%;
+    }
+
+    .footer-sqs-signup {
+        padding-top: 0;
+    }
+
+    .markdown-block p {
+        padding-top: 15px;
+    }
+
+    .socialaccountlinks-v2-block {
+        text-align: left;
+    }
+
+    .footer-markdown-block p {
+        font-size: .9em !important;
+        color: hsla( 0,0%,100% ,1);
+        text-align: center !important;
+        line-height: 1.8em;
+    }
+
+    .align-item-text {
+        font-size: .9em !important;
+        color: hsla( 0,0%,100% ,1);
+        text-align: right !important;
+        line-height: 1.8em;
+    }
+
+    .footer-subroot-socailmedia {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}

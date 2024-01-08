@@ -1,0 +1,342 @@
+.artist-root {
+    background-color: hsla( 0,0%,6.2745098039215685% ,1);
+    padding-bottom: 60px;
+}
+
+.custom-items-container {
+    padding-top: 12px;
+    padding-top: 3.3vmax;
+    padding-bottom: 3.3vmax;
+    justify-content: center;
+    padding-right: 3.3vmax;
+    padding-left: 3.3vmax;
+    background: hsla( 0,0%,6.2745098039215685% ,1);
+}
+
+.custom-items-root {
+    border: 1px solid #f26a09;
+    padding: 5px 10px;
+    padding: 0.3125rem 0.625rem;
+    min-height: 0;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    vertical-align: middle;
+    align-items: center;
+    background: hsla( 0,0%,6.2745098039215685% ,1);
+}
+
+.custom-items-search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.sqs-layout {
+    color: #fff;
+    font-size: calc((1.1 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+    float: none;
+    width: auto;
+    word-wrap: break-word;
+}
+
+.sqs-layout h2 {
+    white-space: pre-wrap;
+    border-bottom: 3px solid #f26a09!important;
+    padding-bottom: 3px !important;
+    display: block !important;
+    text-align: center !important;
+    font-size: 1.6em !important;
+    line-height: calc(1.4em * (1 + (1 - 2)/25));
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.artist-sqs-layout {
+    color: #fff;
+    font-size: calc((1.1 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
+    float: none;
+    width: auto;
+    word-wrap: break-word;
+    width: 100%;
+    cursor: pointer;
+}
+
+.artist-sqs-layout h2 {
+    white-space: pre-wrap;
+    border-bottom: 3px solid #f26a09;
+    padding-bottom: 3px;
+    display: block;
+    text-align: center;
+    font-size: 1.6em;
+    line-height: calc(1.4em * (1 + (1 - 2)/25));
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.productItem-details-checkout {
+    text-align: center;
+}
+
+.productItem-product-price {
+    margin-bottom: 50px;
+    display: block;
+}
+
+.substore-content-wrapper {
+    /* padding-top: 3.3vmax; */
+    /* padding-bottom: 3.3vmax; */
+    justify-content: center;
+    padding-right: 3.3vmax;
+    padding-left: 3.3vmax;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: content-box;
+    position: relative;
+    color: #fff;
+}
+
+.custom-items-icon {
+    width: 25px;
+    height: 20px;
+    padding-right: 0.625rem;
+    object-fit: contain;
+}
+
+.custom-items-input {
+    font-size: 14px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.129px;
+    text-align: left;
+    border: none;
+    background-color: hsla( 0,0%,6.2745098039215685% ,1);
+    padding: 0.625rem 0.625rem;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    width: 100%;
+}
+
+.artist-block-outer-wrapper {
+    border-radius: 4px;
+}
+
+.portfolio-text {
+    margin-top: 0;
+    position: relative;
+    text-align: center;
+}
+
+.portfolio-text:last-child {
+    margin-bottom: 20px;
+}
+
+.portfolio-title {
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid #f26a09 !important;
+    padding-bottom: 4px !important;
+    display: inline-block !important;
+}
+
+.artist-content-wrapper {
+    padding-top: 3.3vmax;
+    /* padding-bottom: 6.3vmax; */
+    justify-content: center;
+    padding-right: 3.3vmax;
+    padding-left: 3.3vmax;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: content-box;
+    position: relative;
+    color: #fff;
+}
+
+.artist-block-image {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: 50% 50%;
+    border-radius: 4px;
+}
+
+.artistdetail-block-image {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: 50% 50%;
+    border-radius: 4px;
+}
+
+.artistdetail-sqsrte-large {
+    color: #fff;
+    word-wrap: break-word;
+    line-height: 1.8em;
+    margin: 1rem 0;
+    font-size: 16px;
+    font-weight: 300;
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+.artistdetail-product-price {
+    margin-bottom: 25px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.artistdetail-video-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.artistdetail-content-wrapper {
+    /* padding-top: 3.3vmax; */
+    /* padding-bottom: 3.3vmax; */
+    justify-content: center;
+    padding-right: 3.3vmax;
+    padding-left: 3.3vmax;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: content-box;
+    position: relative;
+    color: #fff;
+}
+
+.artistdetail-artwork-content-wrapper {
+    padding-top: 3.3vmax;
+    padding-bottom: 3.3vmax;
+    justify-content: center;
+    padding-right: 3.3vmax;
+    padding-left: 3.3vmax;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: content-box;
+    position: relative;
+    color: #fff;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.artistdetail-artwork-content-carousel {
+    padding-top: 3.3vmax;
+    padding-bottom: 3.3vmax;
+    justify-content: center;
+    padding-right: 3.3vmax;
+    padding-left: 3.3vmax;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: content-box;
+    position: relative;
+    color: #fff;
+}
+
+.item-pagination-icon-left {
+    width: 30px;
+    height: 31px;
+    object-fit: contain;
+    display: block;
+    margin-right: auto;
+}
+
+.item-pagination-icon-right {
+    width: 30px;
+    height: 31px;
+    object-fit: contain;
+    transform: rotate(180deg);
+    display: block;
+    margin-left: auto;
+}
+
+@media (min-width: 1024px) {
+    .artist-root-grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 0 35px;
+        row-gap: 30px;
+    }
+
+    .artist-block-image {
+        width: 364px;
+        height: 364px;
+        border-radius: 0;
+    }
+
+    .artistdetail-block-image {
+        width: 500px;
+        height: 500px;
+        border-radius: 0;
+    }
+
+    .artist-content-wrapper {
+        padding: 0;
+    }
+
+    .artistdetail-product-price {
+        text-align: left;
+    }
+
+    .artist-background-container {
+        border-radius: 6px;
+        background-color: #010101;
+        cursor: pointer;
+    }
+
+    .artist-background-container:hover {
+        background-color: #f26a09 !important;
+        transform: translatez(0);
+    }
+
+    .artist-block-outer-wrapper {
+        opacity: .95 !important;
+    }
+
+    .portfolio-text:last-child {
+        margin-bottom: 0;
+    }
+
+    .portfolio-title {
+        border-bottom: none !important;
+        text-transform: uppercase;
+    }
+
+    .search-desk-root-custom {
+        width: 20%;
+        display: block;
+        margin: auto;
+    }
+
+    .artistdetail-desk-roots {
+        padding: 3.3vmax 5rem;
+    }
+
+    .artistdetail-htmlcontent-wrapper {
+        float: left;
+        padding-right: 2rem;
+        padding-bottom: 40px;
+    }
+
+    .artistdetail-content-desk-heading {
+        margin-top: 0;
+        padding-bottom: 4px !important;
+        display: inline-block !important;
+    }
+
+    .substore-content-wrapper {
+        display: block;
+        padding: 0;
+    }
+
+    .artistdetail-artwork-content-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
