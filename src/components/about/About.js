@@ -170,7 +170,7 @@ return (
                                         placeholder="" 
                                         type="text"
                                         name="mobile"
-                                        maxLength={10}
+                                        // maxLength={10}
                                         value={formData.mobile}
                                         onChange={handleInputChange}
                                     />

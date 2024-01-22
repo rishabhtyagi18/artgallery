@@ -3,6 +3,7 @@ import './Store.css';
 import StoreBox from './StoreBox';
 import { useParams, useNavigate } from 'react-router-dom';
 import GetInTouch from './GetInTouch';
+import PurchaseArtwork from './PurchaseArtwork';
 
 const StoreDetail = ({ storeName }) => {
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ const StoreDetail = ({ storeName }) => {
 
     const [layout, setlayout] = useState(false);
     const [getTouch, setGetTouch] = useState(false);
+    const [purchaseArt, setPurchaseArt] = useState(false);
     const [cartQuantity, setCartQuantity] = useState(0);
 
     const addToCart = (itemId) => {
@@ -57,6 +59,15 @@ return (
             <StoreBox 
                 hide={() => {
                     setlayout(false);
+                    const z = document.getElementsByTagName('body');
+                    z[0].style.overflow = 'scroll';
+                }}
+            />
+        }
+        {purchaseArt &&
+            <PurchaseArtwork
+                hide={() => {
+                    setPurchaseArt(false);
                     const z = document.getElementsByTagName('body');
                     z[0].style.overflow = 'scroll';
                 }}
@@ -112,9 +123,10 @@ return (
                             <div className="sqs-add-to-cart-button-wrapper">
                                 <div 
                                     className="sqs-button-element-primary"
-                                    // onClick={() => {
-                                    //     addToCart("5f4e4b2e71aa8a405c419cce");
-                                    // }}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        setPurchaseArt(true);
+                                    }}
                                 >
                                     <div className="sqs-add-to-cart-button-innercart">Purchase Artwork</div>
                                 </div>

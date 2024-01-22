@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './GetInTouch.css';
 import Toast from '../toast/Toast';
 
-const GetInTouch = props => {
+const PurchaseArtwork = props => {
 
     useEffect(() => {
         // Block background scroll when the pop-up is opened
@@ -19,7 +19,6 @@ const GetInTouch = props => {
         email: '',
         mobile: '',
         communicationPreference: '',
-        natureOfQuery: 'SELECT',
         message: ''
     });
     const [toastConfig, setToastConfig] = useState({
@@ -49,13 +48,10 @@ const GetInTouch = props => {
             setToastConfig({ ...toastConfig, show: true, text: 'Please Enter a Valid Email' });
         } else if (!formData.communicationPreference || formData.communicationPreference.trim() === '') {
             setToastConfig({ ...toastConfig, show: true, text: 'Please select a Communication Preference' });
-        } else if (!formData.natureOfQuery || formData.natureOfQuery === 'SELECT') {
-            setToastConfig({ ...toastConfig, show: true, text: 'Please select a Nature of Query' });
         } else {
             setToastConfig({ ...toastConfig, show: true, text: 'We will get in Touch' });
         }
     };
-
 
   return (
     <>
@@ -64,7 +60,7 @@ const GetInTouch = props => {
             <div className="get-touch-container">
                 <div className="touch-header-container">
                     <div className="heading">
-                        Get In Touch
+                        Purchase Artwork
                     </div>
                     <img src="../../assets/touch-close.png" className="get-touch-close-img" onClick={props.hide} />
                 </div>
@@ -113,7 +109,7 @@ const GetInTouch = props => {
                                         placeholder="" 
                                         type="text"
                                         name="mobile"
-                                        // maxLength={10}
+                                        // maxLength={15}
                                         value={formData.mobile}
                                         onChange={handleInputChange}
                                     />
@@ -148,22 +144,6 @@ const GetInTouch = props => {
                                 </div>
 
                                 <div className="form-item-field">
-                                    <label className="form-item-label"><span className="form-item-name">Nature of Query</span><span className="form-item-required">(required)</span></label>
-                                    <select
-                                        name="natureOfQuery"
-                                        value={formData.natureOfQuery}
-                                        onChange={handleInputChange}
-                                        className="form-item-select"
-                                    >
-                                        <option value="SELECT">Select an option</option>
-                                        <option value="Artist Details">Artist Details</option>
-                                        <option value="Price of Artwork">Price of Artwork</option>
-                                        <option value="Commission Similar Artwork">Commission Similar Artwork</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-
-                                <div className="form-item-field">
                                     <label className="form-item-label"><span className="form-item-name">Message</span></label>
                                     <textarea 
                                         class="form-item-textarea" 
@@ -182,8 +162,6 @@ const GetInTouch = props => {
                             <button 
                                 onClick={() => profileSubmit()} 
                                 className="get-touch-sqs-block-button-element"
-                                // tyle={buttonColor ? {opacity : '0.4'} : {opacity:  'unset'}}
-                                // disabled={buttonColor}
                             >
                                 SUBMIT
                             </button>
@@ -211,5 +189,5 @@ const GetInTouch = props => {
   );
 };
 
-export default GetInTouch;
+export default PurchaseArtwork;
 

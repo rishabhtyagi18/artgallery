@@ -23,7 +23,7 @@ const Footer = (props) => {
 
                         <div className="sqs-block markdown-block sqs-block-markdown">
                             <div className="sqs-block-content">
-                                <h3>Gallery Timings</h3>
+                                <h3>Mumbai Gallery Timings</h3>
                                 <p>BY APPOINTMENT ONLY</p>
                             </div>
                         </div>
