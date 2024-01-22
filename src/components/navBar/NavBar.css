@@ -94,6 +94,7 @@
     color: hsla( 0,0%,100% ,1) !important;
     line-height: 2.5em !important;
     font-size: 1.5em !important;
+    font-weight: 300;
 }
 
 .header-menu-nav-item a {
@@ -134,7 +135,7 @@
     border-width: 0px;
     padding: 0.75em 1.2525em;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: .02em;
     text-transform: uppercase;
     font-size: 1.2rem;

@@ -86,12 +86,13 @@
     box-sizing: border-box;
     padding-top: 2rem;
     padding-bottom: 12px;
+    font-weight: 300;
 }
 
 .gallery-filter-content {
     color: #fff;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 300;
     font-stretch: normal;
     font-style: normal;
     letter-spacing: 0.129px;
@@ -117,6 +118,13 @@
 
 .custom-filters-desk-gallery {
     display: none;
+}
+
+.filter-desk-selected-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-right: 5px;
 }
 
 @media (min-width: 1024px) {
@@ -170,6 +178,7 @@
 
     .gallery-image-caption {
         padding-top: 12px;
+        font-weight: 300;
     }
 
     .filters-span-text {

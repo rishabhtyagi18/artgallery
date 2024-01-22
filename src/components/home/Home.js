@@ -112,23 +112,23 @@ return (
                             <h2>Featured Artwork</h2>
                             <div className="summary-item-list summary-desk-network-root">
                                 <div className="summary-item-wrapper">
-                                    <a href="/store/p/skd23-22phx" className="summary-thumbnail-container">
+                                    <a href="/store/p/fgm8-ftmm5-mtrr2-w7x56" className="summary-thumbnail-container">
                                         <img src="https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1679900387508-D5MYIB7P3RM3PTXRC14P/SD4.JPG?format=1000w" alt="artist" />
                                     </a>
                                     <div className="summary-image-caption">
                                         <a href="/store/p/skd23-22phx">Shashikant Dhotre | 30 in X 40 in</a>
-                                        <div className="product-price">₹0.00</div>
+                                        <div className="product-price">&#8377; 0.00</div>
                                         <div className="summary-price">Enquire Price</div>
                                     </div>
                                 </div>
 
                                 <div className="summary-item-wrapper">
-                                    <a href="/" className="summary-thumbnail-container">
+                                    <a href="/store/p/fgm8-ftmm5-mtrr2-w7x56" className="summary-thumbnail-container">
                                         <img src="https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1653027989582-3QWSOTILZS0DCGFL6YU3/SSD5.jpg?format=750w" alt="artist" />
                                     </a>
                                     <div className="summary-image-caption">
                                         <a href="/store/p/skd23-22phx">Siddharth Shingade | 30 in X 30 in</a>
-                                        <div className="product-price">₹156,000.00</div>
+                                        <div className="product-price">&#8377; 156,000.00</div>
                                     </div>
                                 </div>
                             </div>

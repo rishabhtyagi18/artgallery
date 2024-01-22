@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import './Store.css';
 import StoreBox from './StoreBox';
 import { useParams, useNavigate } from 'react-router-dom';
+import GetInTouch from './GetInTouch';
 
 const StoreDetail = ({ storeName }) => {
     const navigate = useNavigate();
@@ -26,6 +27,7 @@ const StoreDetail = ({ storeName }) => {
     const { subStoreName } = useParams();
 
     const [layout, setlayout] = useState(false);
+    const [getTouch, setGetTouch] = useState(false);
     const [cartQuantity, setCartQuantity] = useState(0);
 
     const addToCart = (itemId) => {
@@ -55,6 +57,15 @@ return (
             <StoreBox 
                 hide={() => {
                     setlayout(false);
+                    const z = document.getElementsByTagName('body');
+                    z[0].style.overflow = 'scroll';
+                }}
+            />
+        }
+        {getTouch && 
+            <GetInTouch
+                hide={() => {
+                    setGetTouch(false);
                     const z = document.getElementsByTagName('body');
                     z[0].style.overflow = 'scroll';
                 }}
@@ -101,16 +112,22 @@ return (
                             <div className="sqs-add-to-cart-button-wrapper">
                                 <div 
                                     className="sqs-button-element-primary"
-                                    onClick={() => {
-                                        addToCart("5f4e4b2e71aa8a405c419cce");
-                                    }}
+                                    // onClick={() => {
+                                    //     addToCart("5f4e4b2e71aa8a405c419cce");
+                                    // }}
                                 >
-                                    <div className="sqs-add-to-cart-button-innercart">Add To Cart</div>
+                                    <div className="sqs-add-to-cart-button-innercart">Purchase Artwork</div>
                                 </div>
                             </div>
 
-                            <div className="sqs-add-to-cart-button">
-                                <div className="sqs-add-to-cart-button-inner">Get in Touch</div>
+                            <div 
+                                className="sqs-button-element-primary"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    setGetTouch(true);
+                                }} 
+                            >
+                                <div className="sqs-add-to-cart-button-innercart">Get in Touch</div>
                             </div>
                         </div>
                     </div>
@@ -119,7 +136,7 @@ return (
 
             <div className="substore-content-wrapper">
                 <div className="storeDetail-sqs-layout">
-                    <h2>Similar Artwork</h2>
+                    <h2>You May Also Like</h2>
                 </div>
             </div>
             

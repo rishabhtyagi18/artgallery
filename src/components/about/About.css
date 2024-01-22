@@ -80,14 +80,14 @@
 
 .about-connect-sqs-layout h2 {
     white-space: pre-wrap;
-    border-bottom: 3px solid #f26a09!important;
-    padding-bottom: 3px !important;
-    display: block !important;
-    text-align: center !important;
-    font-size: 1.6em !important;
+    border-bottom: 3px solid #f26a09;
+    padding-bottom: 3px;
+    display: block;
+    text-align: center;
+    font-size: 1.6rem;
     line-height: calc(1.4em * (1 + (1 - 2)/25));
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .sqs-layout {
@@ -143,9 +143,8 @@
     background: hsla( 24.97854077253219,92.82868525896416%,49.2156862745098% ,1);
     border-color: hsla( 0,0%,100% ,1);
     border-radius: 0.4rem;
-    font-family: Poppins;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 300;
     line-height: 1.2em;
     letter-spacing: .02em;
     text-transform: none;
@@ -160,7 +159,7 @@
     word-wrap: break-word;
     line-height: 1.8em;
     margin: 1rem 0;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 300;
 }
 
@@ -206,11 +205,13 @@
 
 .form-item-name {
     -webkit-tap-highlight-color: transparent;
+    font-weight: 300;
+    font-size: 18px;
 }
 
 .form-item-required {
     font-weight: 300;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .form-item-input {
@@ -287,8 +288,16 @@
         display: none;
     }
 
+    .about-sqsrte-large {
+        font-size: 18px;
+    }
+
     .about-desk-root {
         display: block;
+    }
+
+    .about-connect-sqs-layout h2{
+        font-size: 2rem;
     }
 
     .about-section-background img {
@@ -340,6 +349,4 @@
         padding-top: 15px;
         padding-bottom: 3rem;
     }
-
-
 }

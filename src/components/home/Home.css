@@ -23,7 +23,7 @@
 }
 
 .carousel .slide .legend {
-    font-weight: 400 !important;
+    font-weight: 300;
     background: transparent !important;
     opacity: 1 !important;
     bottom: 25px !important;
@@ -58,14 +58,14 @@
 
 .sqs-layout h2 {
     white-space: pre-wrap;
-    border-bottom: 3px solid #f26a09!important;
+    border-bottom: 3px solid #f26a09;
     padding-bottom: 3px !important;
     display: block !important;
-    text-align: center !important;
-    font-size: 1.6em !important;
+    text-align: center;
+    font-size: 2rem;
     line-height: calc(1.4em * (1 + (1 - 2)/25));
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .sqsrte-large {
@@ -75,7 +75,7 @@
     word-wrap: break-word;
     line-height: 1.8em;
     margin: 1rem 0;
-    font-size: 1rem !important;
+    font-size: 1.1rem !important;
     font-weight: 300;
 }
 
@@ -109,7 +109,7 @@
     border-color: hsla( 0,0%,100% ,1);
     border-radius: 0.4rem;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 300;
     line-height: 1.2em;
     letter-spacing: .02em;
     text-transform: none;
@@ -189,6 +189,8 @@
     margin: 0 0 2px 0;
     font-size: 13px;
     line-height: 20px;
+    font-weight: 300;
+    /* font-family: futura-pt; */
 }
 
 .summary-price {
@@ -196,6 +198,7 @@
     font-size: 13px;
     line-height: 20px;
     margin: 0 0 2px 0;
+    font-weight: 300;
 }
 
 .home-content-network-wrapper {
@@ -230,6 +233,7 @@
 
     .carousel .slide .legend {
         font-size: 20px;
+        font-weight: 300;
     }
 
     .sqs-art-desk-gallery {

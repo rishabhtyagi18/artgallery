@@ -67,39 +67,29 @@
   .faqs .faq .faq-question {
     position: relative;
     transition: all 0.4s ease;
-
     text-indent: -39px;
     padding-left: 39px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: calc(1.4em * (1 + (1 - 1.1)/25));
     letter-spacing: 0em;
-    font-size: 1em;
+    font-size: 18px;
 
   }
   
   .faqs .faq .faq-question::before {
-    /* content: "+";
-    position: absolute;
-    top: 50%;
-    right: 0px;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    transition: all 0.2s ease; */
-
     content: "+";
     transform: translateY(-50%);
     transition: all 0.2s ease;
-    font-family: monospace !important;
-    font-size: 1.25em !important;
+    font-size: 1.25rem;
     color: #f0f0f0;
     border: 2px solid #f26a09;
-    border-radius: 40px !important;
-    margin-right: 10px !important;
+    border-radius: 50%;
+    margin-right: 15px;
     background-color: #f26a09;
-    padding-left: 6px !important;
-    padding-right: 6px !important;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: 400;
   }
   
   .faqs .faq .faq-answer {
@@ -114,7 +104,8 @@
     font-weight: 400;
     line-height: 1.8em;
     letter-spacing: 0em;
-    font-size: .9em !important;
+    font-size: 17px;
+    font-weight: 300;
   }
 
   /* .faqs .faq .faq-answer-ul {
@@ -144,6 +135,11 @@
   
   .faqs .faq.open .faq-question::before {
     content: "-";
+    background: transparent;
+    padding-left: 9px;
+    padding-right: 9px;
+    position: relative;
+    font-size: 20px;
   }
   
   .faqs .faq.open .faq-answer {

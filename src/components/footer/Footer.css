@@ -51,16 +51,19 @@ h3 {
     border-bottom: 1px solid #f0f0f0 !important;
     padding-bottom: 2px !important;
     text-align: center !important;
-    font-size: 1em !important;
+    font-size: 1.2em !important;
     color: hsla( 0,0%,100% ,1);
     line-height: calc(1.4em * (1 + (1 - 1.5)/25));
+    font-weight: 300;
+    text-transform: uppercase;
 }
 
 .markdown-block p {
-    font-size: .9em !important;
+    font-size: .9em;
     color: hsla( 0,0%,100% ,1);
     text-align: center !important;
     line-height: 1.8em;
+    font-weight: 300;
 }
 
 
@@ -81,8 +84,8 @@ a {
     padding: 0.9375rem;
     font-size: 14px;
     font-size: .875rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 400;
+    /* text-transform: uppercase; */
     font-stretch: normal;
     font-style: normal;
     letter-spacing: .129px;
@@ -168,6 +171,11 @@ margin: 0 0 20px !important;
         /* align-items: center; */
     }
 
+    .email-input {
+        margin: 0 auto 20px !important;
+        width: 80%;
+    }
+
     .footer-desktop-view {
         display: block;
         padding: 0;
@@ -192,6 +200,7 @@ margin: 0 0 20px !important;
 
     .markdown-block p {
         padding-top: 15px;
+        font-size: 1rem;
     }
 
     .socialaccountlinks-v2-block {
@@ -199,17 +208,19 @@ margin: 0 0 20px !important;
     }
 
     .footer-markdown-block p {
-        font-size: .9em !important;
+        font-size: 1em !important;
         color: hsla( 0,0%,100% ,1);
         text-align: center !important;
         line-height: 1.8em;
+        font-weight: 300;
     }
 
     .align-item-text {
-        font-size: .9em !important;
+        font-size: 1em !important;
         color: hsla( 0,0%,100% ,1);
         text-align: right !important;
         line-height: 1.8em;
+        font-weight: 300;
     }
 
     .footer-subroot-socailmedia {

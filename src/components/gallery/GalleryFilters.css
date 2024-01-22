@@ -127,6 +127,7 @@
 .defaultLabel {
     color: #fff;
     text-transform: uppercase;
+    font-weight: 300;
 }
 
 .archive-group-list {
@@ -144,6 +145,45 @@
     list-style: none;
     padding: 0 13px;
     background-color: #303030;
+    font-weight: 300;
+}
+
+.filter-selected-close {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+}
+
+.filter-selected-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.clear-filter-toggle-label {
+    height: 100%;
+    white-space: nowrap;
+    line-height: inherit;
+    text-align: left;
+    font-size: 1em;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.clear-filter-selected-container {
+    width: 100%;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .archive-group-list li {

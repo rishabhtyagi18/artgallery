@@ -41,7 +41,7 @@ const Footer = (props) => {
                                     <input
                                         type="email"
                                         placeholder="Enter Email Address"
-                                        value=""
+                                        // value=""
                                         className="email-input"
                                     />
                                 </div>
@@ -62,13 +62,13 @@ const Footer = (props) => {
                         <div className="sqs-block socialaccountlinks-v2-block sqs-block-markdown">
                             <div className="sqs-block-content">
                                 <div className="sqs-svg-icon--list">
-                                    <a href="https://www.facebook.com/mokshartgallery/" className="sqs-svg-icon--wrapper facebook-unauth">
+                                    <a target="_blank" href="https://www.facebook.com/mokshartgallery/" className="sqs-svg-icon--wrapper facebook-unauth">
                                         <img src="../../assets/facebook.png" alt="facebook" className="sqs-svg-icon--wrapper facebook-unauth" />
                                     </a>
-                                    <a href="https://www.facebook.com/mokshartgallery/" className="sqs-svg-icon--wrapper facebook-unauth">
+                                    <a target="_blank" href="https://www.instagram.com/mokshartgallery/" className="sqs-svg-icon--wrapper facebook-unauth">
                                         <img src="../../assets/instagram.png" alt="instagram" className="sqs-svg-icon--wrapper facebook-unauth" />
                                     </a>
-                                    <a href="https://www.facebook.com/mokshartgallery/" className="sqs-svg-icon--wrapper facebook-unauth">
+                                    <a target="_blank" href="http://www.linkedin.com/company/moksh-art-gallery---india/" className="sqs-svg-icon--wrapper facebook-unauth">
                                         <img src="../../assets/linkedin.png" alt="linkedin" className="sqs-svg-icon--wrapper facebook-unauth" />
                                     </a>
                                 </div>

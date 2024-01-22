@@ -40,6 +40,7 @@
     float: none;
     width: auto;
     word-wrap: break-word;
+    font-weight: 300;
 }
 
 .sqs-layout h2 {
@@ -70,10 +71,10 @@
     padding-bottom: 3px;
     display: block;
     text-align: center;
-    font-size: 1.6em;
+    font-size: 2rem;
     line-height: calc(1.4em * (1 + (1 - 2)/25));
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .productItem-details-checkout {
@@ -186,8 +187,9 @@
 
 .artistdetail-product-price {
     margin-bottom: 25px;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 20px;
+    font-weight: 300;
 }
 
 .artistdetail-video-wrapper {
@@ -263,10 +265,14 @@
         row-gap: 30px;
     }
 
+    .artistdetail-sqsrte-large  {
+        font-size: 18px;
+    }
+
     .artist-block-image {
         width: 364px;
         height: 364px;
-        border-radius: 0;
+        border-radius: 6px 6px 0px 0px;
     }
 
     .artistdetail-block-image {
