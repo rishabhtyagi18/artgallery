@@ -15,6 +15,7 @@ const StoreView = lazy(() => import("../components/store/StoreView"));
 const StoreDetail = lazy(() => import("../components/store/StoreDetail"));
 const Cart = lazy(() => import("../components/cart/Cart"));
 const NotFound = lazy(() => import("../components/notFound/NotFound"));
+const ArtAdvisory = lazy(() => import("../components/artAdvisory/ArtAdvisory"));
 
 const storeName = ["Abstract", "All", "Figurative", "Landscape", "Seascape", "Semi Abstract", "Shahshikant Dhotre"];
 
@@ -36,6 +37,7 @@ const RoutingComponent = (props) => {
                 <Route path="/store" element={ <Store storeName={storeName} /> } />
                 <Route path={`/store/:subStoreName`} element={ <StoreView storeName={storeName} /> } />
                 <Route path={`store/p/fgm8-ftmm5-mtrr2-w7x56`} element={ <StoreDetail storeName={storeName} /> } />
+                <Route path="/art-advisory" element={<ArtAdvisory /> } />
                 {/* <Route path="cart" element={ <Cart /> } /> */}
                 <Route path="/error-page" element={ <NotFound /> } />
                 <Route
