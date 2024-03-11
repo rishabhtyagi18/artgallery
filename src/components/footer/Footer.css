@@ -81,7 +81,7 @@ a {
 }
 
 .email-input {
-    padding: 0.9375rem;
+    padding: 14px;
     font-size: 14px;
     font-size: .875rem;
     font-weight: 400;
@@ -101,6 +101,7 @@ a {
     border: 0.0625rem solid hsla(0,0%,60.8%,.3);
     overflow: hidden;
     width: -webkit-fill-available;
+    outline: none;
 }
 
 .email-input {
@@ -136,7 +137,7 @@ margin: 0 0 20px !important;
     padding: 4px 18px !important;
     text-transform: uppercase !important;
     color: #f0f0f0 !important;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     letter-spacing: .02em !important;
     font-size: 1em !important;
     background-color: #f26a09 !important;
@@ -224,8 +225,8 @@ margin: 0 0 20px !important;
     }
 
     .footer-subroot-socailmedia {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
         align-items: center;
     }
 }

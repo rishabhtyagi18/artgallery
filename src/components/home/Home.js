@@ -86,26 +86,6 @@ return (
             </div>
 
             <div className="home-featured-desk-artist-root">
-                <div className="home-featured-desk-artist-subRoot">
-                    <div className="home-content-wrapper home-desk-artist-padding">
-                        <div className="sqs-layout">
-                            <h2>Featured Artist</h2>
-                            <div className="image-block-outer-wrapper">
-                                <img src="https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1593076424140-K5YC5N43VJF5EH10MTTD/photo.jpg?format=1000w" alt="artist" className="sqs-block-image" />
-                                <div className="image-caption">
-                                    <p>Shashikant Dhotre</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="home-content-wrapper">
-                        <div className="sqs-layout">
-                            <a href="/artists/ajay-de" className="sqs-block-button-element">VIEW ARTIST</a>
-                        </div>
-                    </div>
-                </div>
-
                 <div>
                     <div className="home-content-wrapper home-content-desk-artwork">
                         <div className="sqs-layout">
@@ -138,6 +118,26 @@ return (
                     <div className="home-content-network-wrapper">
                         <div className="sqs-layout">
                             <a href="/gallery" className="sqs-block-button-element">View All Artwork</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="home-featured-desk-artist-subRoot">
+                    <div className="home-content-wrapper home-desk-artist-padding">
+                        <div className="sqs-layout">
+                            <h2>Featured Artist</h2>
+                            <div className="image-block-outer-wrapper">
+                                <img src="https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1593076424140-K5YC5N43VJF5EH10MTTD/photo.jpg?format=1000w" alt="artist" className="sqs-block-image" />
+                                <div className="image-caption">
+                                    <p>Shashikant Dhotre</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="home-content-wrapper">
+                        <div className="sqs-layout">
+                            <a href="/artists/ajay-de" className="sqs-block-button-element">VIEW ARTIST</a>
                         </div>
                     </div>
                 </div>

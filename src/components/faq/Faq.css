@@ -106,6 +106,7 @@
     letter-spacing: 0em;
     font-size: 17px;
     font-weight: 300;
+    margin-block-start: 0;
   }
 
   /* .faqs .faq .faq-answer-ul {

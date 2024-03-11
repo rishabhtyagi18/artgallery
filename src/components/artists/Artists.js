@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import './Artists.css';
 import { useNavigate } from 'react-router-dom';
 
 const Artists = (props) => {
 
     const navigate = useNavigate();
+    const [searchTxt, setSearchTxt] = useState('');
 
     const arr = [{
         img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1593204758393-LKJJ0SKA6B9Y91PSOYSO/photo.jpg?format=1000w",
@@ -55,10 +56,15 @@ return (
                         className="custom-items-icon"
                         />
                         <input
-                        type="text"
-                        placeholder="Search"
-                        className="custom-items-input"
+                            type="text"
+                            placeholder="Search"
+                            className="custom-items-input"
+                            value={searchTxt}
+                            onChange={(e) => setSearchTxt(e.target.value)}
                         />
+                        {searchTxt !== '' && <img 
+                            onClick={() => setSearchTxt('')}
+                            className="search-selected-close" src="../../assets/close.png" />}
                     </div>
                 </div>
             </div>

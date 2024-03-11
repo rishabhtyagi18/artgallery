@@ -127,6 +127,21 @@
     margin-right: 5px;
 }
 
+.product-price {
+    margin: 0 0 2px 0;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 300;
+}
+
+.summary-price {
+    text-transform: capitalize !important;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 0 0 2px 0;
+    font-weight: 300;
+}
+
 @media (min-width: 1024px) {
     .gallery-desk-root-container {
         display: grid;

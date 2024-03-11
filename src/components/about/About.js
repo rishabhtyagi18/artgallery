@@ -2,12 +2,22 @@ import React, { useState ,useRef, useEffect } from "react";
 import './About.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Toast from '../toast/Toast';
+import utils from '../../utils';
 
 const About = (props) => {
 
     const navigate = useNavigate();
     const connectSectionRef = useRef(null);
     const location = useLocation();
+    const sortedData = utils.getCountryFlag();
+    const keyToPrioritize = 'preferred';
+    const valueToPrioritize = !0;
+    const flag = sortedData.sort((a, b) => {
+        if (a[keyToPrioritize] === valueToPrioritize) return -1; // a comes first
+        if (b[keyToPrioritize] === valueToPrioritize) return 1; // b comes first
+        return 0; // maintain the current order
+      });
+    const [country, setCountry] = useState({name:"India",dial_code:"+91",code:"IN",preferred:!0,flag:"🇮🇳"});
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -20,6 +30,7 @@ const About = (props) => {
         showTick: false,
         time: 1500,
     });
+    const [expand, setExpand] = useState(false);
 
     useEffect(() => {
         if (location.search.includes('scrollToConnect') && connectSectionRef.current) {
@@ -66,7 +77,7 @@ const About = (props) => {
         } else if (!formData.message || formData.message.trim() === '') {
             setToastConfig({ ...toastConfig, show: true, text: 'Please Enter Message' });
         } else {
-            setToastConfig({ ...toastConfig, show: true, text: 'We will get in Touch' });
+            setToastConfig({ ...toastConfig, show: true, text: 'Thank you for connecting with Moksh Art Gallery. We will get in touch with you soon.' });
         }
     };
     
@@ -162,18 +173,44 @@ return (
 
                                 <div className="form-item-field">
                                     <label className="form-item-label"><span className="form-item-name">Phone</span></label>
-                                    <input 
-                                        aria-invalid="false" 
-                                        aria-required="true" 
-                                        autocomplete="false" 
-                                        class="form-item-input" 
-                                        placeholder="" 
-                                        type="text"
-                                        name="mobile"
-                                        // maxLength={10}
-                                        value={formData.mobile}
-                                        onChange={handleInputChange}
-                                    />
+
+                                    <div className="phone-container form-item-input">
+                                        <div className="flag-container" onClick={() => setExpand(!expand)}>
+                                            <div className="selected-flag">
+                                            <div className="iti__flag iti__in">{country.flag}</div>
+                                            <div className="iti__selected-dial-code">{country.dial_code}</div>
+                                            <div className={`iti__arrow ${expand ? 'iti__arrow--up' : ''}`}></div>
+                                            </div>
+                                        </div>
+
+                                        <input 
+                                            aria-invalid="false" 
+                                            aria-required="true" 
+                                            autocomplete="false" 
+                                            class="form-item-input-country" 
+                                            placeholder="" 
+                                            type="text"
+                                            name="mobile"
+                                            // maxLength={10}
+                                            value={formData.mobile}
+                                            onChange={handleInputChange}
+                                        />
+
+                                        <ul className="country-list" style={expand ? {display: 'block'} :{display: 'none'}}>
+                                            {flag.map((ele, index) => {
+                                                return(
+                                                    <li className="iti__country" onClick={()=> {setCountry(ele)
+                                                    setExpand(!expand)
+                                                    }}>
+                                                        <div className="iti__flag-box">{ele.flag}</div>
+                                                        <div className="iti__country-name">{`(${ele.code})`} </div>
+                                                        <div className="iti__dial-code">{ele.dial_code}</div>
+                                                    </li>
+                                                    )
+                                                })
+                                            }
+                                        </ul>
+                                    </div>
                                 </div>
 
                                 <div className="form-item-field">

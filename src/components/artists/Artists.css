@@ -257,6 +257,13 @@
     margin-left: auto;
 }
 
+.search-selected-close {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
 @media (min-width: 1024px) {
     .artist-root-grid-container {
         display: grid;
@@ -270,14 +277,14 @@
     }
 
     .artist-block-image {
-        width: 364px;
-        height: 364px;
+        width: 350px;
+        height: 350px;
         border-radius: 6px 6px 0px 0px;
     }
 
     .artistdetail-block-image {
-        width: 500px;
-        height: 500px;
+        width: 450px;
+        height: 450px;
         border-radius: 0;
     }
 
@@ -325,7 +332,7 @@
 
     .artistdetail-htmlcontent-wrapper {
         float: left;
-        padding-right: 2rem;
+        padding-right: 3rem;
         padding-bottom: 40px;
     }
 

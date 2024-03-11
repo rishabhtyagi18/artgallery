@@ -190,7 +190,6 @@
     font-size: 13px;
     line-height: 20px;
     font-weight: 300;
-    /* font-family: futura-pt; */
 }
 
 .summary-price {
@@ -243,7 +242,7 @@
 
     .home-featured-desk-artist-root {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 2fr 1fr;
         gap: 25px;
     }
 
@@ -259,10 +258,10 @@
     }
 
     .home-content-desk-artwork {
-        padding-left: 0;
+        padding-right: 0;
         margin-right: 0rem;
         margin-left: 0rem;
-        padding-right: 3.3vmax;
+        padding-left: 3.3vmax;
         display: block;
         padding-bottom: 0;
         padding-top: 0;
@@ -277,7 +276,7 @@
 
     .home-desk-artist-padding {
         padding-bottom: 0;
-        padding-right: 0;
+        padding-left: 0;
         padding-top: 0;
     }
 

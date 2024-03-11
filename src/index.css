@@ -1,9 +1,13 @@
 body {
   margin: 0;
-  font-family: 'Futura PT', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: hsla(0, 0%, 0.39215686274509803%, 1);
 }
 
 code {
-  font-family: 'Futura PT', sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+button {
+  font-family: "Poppins", sans-serif;
 }

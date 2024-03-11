@@ -12,6 +12,7 @@ const Toast = props => {
       props.time ? props.time : 1500
     );
   },[]);
+  
   return (
     <>
       {display ? (
