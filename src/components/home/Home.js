@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import './Home.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getFeatureArtwork, getArtworkStoreDetails } from '../../services/api';
+import { getFeatureArtwork, getArtworkStoreDetails, getArtistDetails } from '../../services/api';
 import Toast from '../toast/Toast';
 
 const Home = (props) => {
@@ -112,6 +112,35 @@ const Home = (props) => {
         }
     };
 
+    const handleArtistDetail = async (artistName) => {
+        try {
+            setLoader(true);
+            const response = await getArtistDetails(artistName);
+            setLoader(false);
+            if (response.status === true) {
+                navigate(`/artists/${artistName}`);
+            } else {
+                setToastConfig({
+                    show: true,
+                    text: 'Error in fetching artist details',
+                    showTick: false,
+                    time: 1500,
+                });
+                navigate('/error-page');
+            }
+        } catch (error) {
+            setLoader(false);
+            console.error('Error fetching artist details:', error);
+            setToastConfig({
+                show: true,
+                text: 'Error in fetching artist details',
+                showTick: false,
+                time: 1500,
+            });
+            navigate('/error-page');
+        }
+    };
+
 return (
     <>  
         {loader ? (
@@ -196,32 +225,20 @@ return (
                     </div>
                 </div>
 
-                <div className="home-featured-desk-artist-subRoot">
+                <div className="home-featured-desk-artist-subRoot home-mob-featured-artist">
                     <div className="home-content-wrapper home-desk-artist-padding">
                         <div className="sqs-layout">
                             <h2>Featured Artist</h2>
 
-                            <div className="summary-item-list summary-desk-network-root">
-                                <div className="image-block-outer-wrapper">
-                                    <img src="https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1593076424140-K5YC5N43VJF5EH10MTTD/photo.jpg?format=1000w" alt="artist" className="sqs-block-image" />
-                                    <div className="image-caption">
-                                        <p>Shashikant Dhotre</p>
+                            <div className="summary-item-list summary-desk-network-root-feature">
+                                {resultData.map((item, index) => ( 
+                                    <div className="image-block-outer-wrapper" key={item.artist?.id} onClick={() => handleArtistDetail(item.pageName)}>
+                                        <img src={item.artist?.image} alt="artist" className="sqs-block-image" />
+                                        <div className="image-caption">
+                                            <p>{item.artist?.name}</p>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div className="image-block-outer-wrapper">
-                                    <img src="https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1593076424140-K5YC5N43VJF5EH10MTTD/photo.jpg?format=1000w" alt="artist" className="sqs-block-image" />
-                                    <div className="image-caption">
-                                        <p>Shashikant Dhotre</p>
-                                    </div>
-                                </div>
-
-                                <div className="image-block-outer-wrapper">
-                                    <img src="https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1593076424140-K5YC5N43VJF5EH10MTTD/photo.jpg?format=1000w" alt="artist" className="sqs-block-image" />
-                                    <div className="image-caption">
-                                        <p>Shashikant Dhotre</p>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                         
@@ -229,7 +246,7 @@ return (
 
                     <div className="home-content-wrapper">
                         <div className="sqs-layout">
-                            <a href="/artists/ajay-de" className="sqs-block-button-element">VIEW ARTIST</a>
+                            <a href="/artists" className="sqs-block-button-element">VIEW ARTIST</a>
                         </div>
                     </div>
                 </div>

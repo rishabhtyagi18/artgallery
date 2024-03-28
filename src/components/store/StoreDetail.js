@@ -258,7 +258,7 @@ const StoreDetail = ({ }) => {
         }
 
         setWaiting(true);
-        const data = {...getTouchformData,'type': 'purchase'};
+        const data = {...getTouchformData,'type': 'get_in_touch'};
         connectCustomer(data).then((res) => {
             if (res.status) {
                 console.log(res.data)

@@ -39,7 +39,7 @@
     padding-top: 3.3vmax;
     padding-bottom: 3.3vmax;
     justify-content: center;
-    padding-right: 4.3vmax;
+    padding-right: 3.3vmax;
     padding-left: 3.3vmax;
     margin: 0 auto;
     display: flex;
@@ -316,6 +316,10 @@ blockquote {
     vertical-align: -webkit-baseline-middle;
 }
 
+.home-mob-featured-artist {
+    display: block;
+}
+
 @media (min-width: 1024px) {
     .home-featured-mob-artist-subRoot {
         display: none;
@@ -378,6 +382,13 @@ blockquote {
         height: auto;
     }
 
+    .summary-desk-network-root-feature {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 30px;
+        height: auto;
+    }
+
     .summary--artwork-desk-network-root {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -421,6 +432,10 @@ blockquote {
     .summary-item-wrapper:hover {
         background-color: #f26a09 !important;
         transform: translatez(0);
+    }
+    
+    .sqs-block-image {
+        height: auto;
     }
 
     .sqs-block-image:hover {

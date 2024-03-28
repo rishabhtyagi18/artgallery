@@ -3,6 +3,8 @@ import './About.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Toast from '../toast/Toast';
 import utils from '../../utils';
+import { connectCustomer } from '../../services/api';
+import { PulseLoader } from 'react-spinners';
 
 const About = (props) => {
 
@@ -18,6 +20,7 @@ const About = (props) => {
         return 0; // maintain the current order
       });
     const [country, setCountry] = useState({name:"India",dial_code:"+91",code:"IN",preferred:!0,flag:"🇮🇳"});
+    const [waiting, setWaiting] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -68,17 +71,56 @@ const About = (props) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const phoneRegex = /^[0-9]{10}$/;
     
-        if (!formData.name || !nameRegex.test(formData.name.trim())) {
+        if (!formData.name || formData.name.trim() === '') {
             setToastConfig({ ...toastConfig, show: true, text: 'Please Enter a Valid Name' });
+            return;
         } else if (!formData.email || !emailRegex.test(formData.email.trim())) {
             setToastConfig({ ...toastConfig, show: true, text: 'Please Enter a Valid Email' });
-        } else if (!formData.mobile || !phoneRegex.test(formData.mobile.trim())) {
+            return;
+        } else if (!formData.mobile || formData.mobile.trim() === '') {
             setToastConfig({ ...toastConfig, show: true, text: 'Please Enter a Valid Phone Number' });
+            return;
         } else if (!formData.message || formData.message.trim() === '') {
             setToastConfig({ ...toastConfig, show: true, text: 'Please Enter Message' });
-        } else {
-            setToastConfig({ ...toastConfig, show: true, text: 'Thank you for connecting with Moksh Art Gallery. We will get in touch with you soon.' });
+            return;
         }
+
+        setWaiting(true);
+        const data = {...formData,'type': 'connect'};
+        connectCustomer(data).then((res) => {
+            if (res.status) {
+                console.log(res.data)
+                setWaiting(false);
+                setToastConfig({
+                    show: true,
+                    text: 'Thank you for connecting with Moksh Art Gallery. We will get in touch with you soon.',
+                    showTick: false,
+                    time: 1500,
+                });
+                setFormData({
+                    name: '',
+                    email: '',
+                    mobile: '',
+                    message: ''
+                });
+            } else {
+                setWaiting(false);
+                setToastConfig({
+                    show: true,
+                    text: 'Issue reported successfully',
+                    showTick: false,
+                    time: 1500,
+                });
+            }
+        }, (err) => {
+            setWaiting(false);
+            setToastConfig({
+            show: true,
+            text: 'Something went wrong',
+            showTick: false,
+            time: 1500,
+            });
+        })
     };
     
     // console.log("formData",formData);
@@ -237,7 +279,7 @@ return (
                         // tyle={buttonColor ? {opacity : '0.4'} : {opacity:  'unset'}}
                         // disabled={buttonColor}
                     >
-                        SUBMIT
+                        {waiting ? <PulseLoader color="#FFF" size={10} /> : 'SUBMIT'} 
                     </button>
                 </div>
             </div>

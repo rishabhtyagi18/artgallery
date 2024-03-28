@@ -35,6 +35,12 @@ const Gallery = (props) => {
         return filters;
     });
 
+    const hideGalleryFilterPopUp = () => {
+        setFilters(false);
+        const z = document.getElementsByTagName('body');
+        z[0].style.overflow = 'scroll';
+    }
+
     useEffect(() => {
         getArtworkDetails().then((res) => {
             if (res.status) {
@@ -90,8 +96,6 @@ const Gallery = (props) => {
         fetchData();
     }, [])
 
-    console.log('filterState',filterState);
-
     useEffect(() => {
         // Update selectedFilters based on filterState
         const newlySelectedFilters = Object.keys(filterState).filter(
@@ -121,7 +125,7 @@ const Gallery = (props) => {
     
             updateURL(updatedFilters);
             setExpand(false);
-    
+            hideGalleryFilterPopUp();
             return updatedFilters;
         });
     };
@@ -168,6 +172,7 @@ const Gallery = (props) => {
         setFilterState(emptyFilters);
         // Update the URL without query parameters
         updateURL({});
+        hideGalleryFilterPopUp();
         // Clear the selected filter type
         setSelectedFilter([]);
     };
@@ -182,6 +187,7 @@ const Gallery = (props) => {
             // Update the URL
             updateURL(updatedFilters);
             setExpand(false);
+            hideGalleryFilterPopUp();
             return updatedFilters;
         });
     };
@@ -246,12 +252,15 @@ return (
 		) : null} 
         {filters &&
             <GalleryFilters 
-                hide={() => {
-                    setFilters(false);
-                    const z = document.getElementsByTagName('body');
-                    z[0].style.overflow = 'scroll';
-                }}
+                hide={() => {hideGalleryFilterPopUp();}}
                 arrFilters={filterData}
+                handleFilterClose={handleFilterClose}
+                expandDiv={expandDiv}
+                clearAllFilters={clearAllFilters}
+                handleIndividualCheckboxChange={handleIndividualCheckboxChange}
+                selectedFilter={selectedFilter}
+                expand={expand}
+                filterState={filterState}
             />
         }
         <div className="gallery-root" style={{marginTop: "95px"}}>
