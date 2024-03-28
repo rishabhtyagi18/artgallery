@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import './Footer.css';
 import Toast from '../toast/Toast';
+import { connectCustomer } from '../../services/api';
+import { PulseLoader } from 'react-spinners';
 
 const Footer = (props) => {
     const [email, setEmail] = useState('');
@@ -10,6 +12,7 @@ const Footer = (props) => {
         showTick: false,
         time: 1500,
     });
+    const [waiting, setWaiting] = useState(false);
 
     const handleInputChange = (event) => {
         const { name, value, type } = event.target;
@@ -28,7 +31,41 @@ const Footer = (props) => {
             return;
         }
 
-        setToastConfig({ ...toastConfig, show: true, text: 'We will get in Touch' });
+        // setEmail('');
+        // setToastConfig({ ...toastConfig, show: true, text: 'You have been added successfully to our mailing list. Thank you!' });
+
+        setWaiting(true);
+        const data = {'email': email, 'type': 'subscribe'};
+        connectCustomer(data).then((res) => {
+            if (res.status) {
+                console.log(res.data)
+                setWaiting(false);
+                setEmail('');
+                setToastConfig({
+                    show: true,
+                    text: 'You have been added successfully to our mailing list. Thank you!',
+                    showTick: false,
+                    time: 1500,
+                });
+                // navigate(`/builders/${builderName}/${builderID}`)
+            } else {
+                setWaiting(false);
+                setToastConfig({
+                    show: true,
+                    text: 'Issue reported successfully',
+                    showTick: false,
+                    time: 1500,
+                });
+            }
+        }, (err) => {
+            setWaiting(false);
+            setToastConfig({
+            show: true,
+            text: 'Something went wrong',
+            showTick: false,
+            time: 1500,
+            });
+        })
     }
 
     return (
@@ -75,7 +112,9 @@ const Footer = (props) => {
                                         />
                                     </div>
                                     <div className="form-button-wrapper form-button-wrapper--align-center" onClick={handleSubscribe}>
-                                        <button type="submit" className="button sqs-system-button sqs-editable-button sqs-button-element--primary NkyzQqS7X0JjKckdVqSS">Subscribe</button>
+                                        <button type="submit" className="button sqs-system-button sqs-editable-button sqs-button-element--primary NkyzQqS7X0JjKckdVqSS">
+                                            {waiting ? <PulseLoader color="#FFF" size={10} /> : 'Subscribe'}
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +139,7 @@ const Footer = (props) => {
                                         <a target="_blank" href="http://www.linkedin.com/company/moksh-art-gallery---india/" className="sqs-svg-icon--wrapper facebook-unauth">
                                             <img src="../../assets/linkedin.png" alt="linkedin" className="sqs-svg-icon--wrapper facebook-unauth" />
                                         </a>
-                                        <a target="_blank" href="http://www.linkedin.com/company/moksh-art-gallery---india/" className="sqs-svg-icon--wrapper facebook-unauth">
+                                        <a target="_blank" href="https://api.whatsapp.com/send?phone=919819052003&text=Hi&source=&data=" className="sqs-svg-icon--wrapper facebook-unauth">
                                             <img src="../../assets/whatsapp.png" alt="whatsapp" className="sqs-svg-icon--wrapper facebook-unauth" />
                                         </a>
                                     </div>

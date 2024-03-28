@@ -51,19 +51,34 @@
 
 .heading {
     font-size: 25px;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 0.86;
     letter-spacing: 0.2px;
     text-align: center;
     margin: auto;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
+}
+
+.artwork-getTouch_heading {
+    font-size: 20px;
+    margin: 1px 0 7px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.artwork-getTouch_subHeading {
+    font-weight: 300;
+    font-size: 15.833px;
+    margin: 0;
+    line-height: 1.5;
 }
 
 .touch-header-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     padding-bottom: 30px;
+    padding-top: 15px;
 }
 
 /* .closeTouch {
@@ -75,7 +90,14 @@
     overflow-y: auto;
     /* height: calc(100% - 57px); */
     padding-right: 9px;
-    height: 80vh;
+    height: 70vh;
+}
+
+.scrollTouch-purchase {
+    overflow-y: auto;
+    /* height: calc(100% - 57px); */
+    padding-right: 9px;
+    height: 65vh;
 }
 
 .scrollTouch::-webkit-scrollbar {
@@ -133,8 +155,8 @@
     box-shadow: 0 0 0 1px transparent;
     transition: .15s background-color cubic-bezier(.33,1,.68,1);
     padding: 0.9375rem;
-    background-color: #303030;
-    color: #f0f0f0;
+    background-color: #ffffff;
+    color: #000000;
     border: 1px solid #f26a09;
     position: relative;
     font-size: 14px;
@@ -197,8 +219,8 @@
     box-shadow: 0 0 0 1px transparent;
     transition: .15s background-color cubic-bezier(.33,1,.68,1);
     padding: 0.9375rem;
-    background-color: #303030;
-    color: #f0f0f0;
+    background-color: #ffffff;
+    color: #000000;
     border: 1px solid #f26a09;
     position: relative;
     font-size: 14px;

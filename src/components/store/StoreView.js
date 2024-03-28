@@ -2,7 +2,7 @@ import React from "react";
 import './Store.css';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const StoreView = ({ storeName }) => {
+const StoreView = ({ }) => {
     const navigate = useNavigate();
 
     const arr = [{

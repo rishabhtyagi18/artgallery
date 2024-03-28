@@ -2,7 +2,7 @@ import React from "react";
 import './Store.css';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const Store = ({ storeName }) => {
+const Store = ({ }) => {
     const navigate = useNavigate();
 
     const arr = [{
@@ -55,7 +55,7 @@ const Store = ({ storeName }) => {
         subText: ""
     }];
 
-    const { subStoreName } = useParams();
+    const storeName = ["Abstract", "All", "Figurative", "Landscape", "Seascape", "Semi Abstract", "Shahshikant Dhotre"];
 
 return (
     <>  

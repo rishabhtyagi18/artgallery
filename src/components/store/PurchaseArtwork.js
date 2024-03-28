@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './GetInTouch.css';
-import Toast from '../toast/Toast';
+import { PulseLoader } from 'react-spinners';
 
-const PurchaseArtwork = props => {
+const PurchaseArtwork = ({ profileSubmit, waiting, formData, handleInputChange, handleNumeric, hide }) => {
 
     useEffect(() => {
         // Block background scroll when the pop-up is opened
@@ -14,58 +14,22 @@ const PurchaseArtwork = props => {
         };
     }, []);
 
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        mobile: '',
-        communicationPreference: '',
-        message: ''
-    });
-    const [toastConfig, setToastConfig] = useState({
-        show: false,
-        text: '',
-        showTick: false,
-        time: 1500,
-    });
-
-    const handleInputChange = (event) => {
-        const { name, value, type } = event.target;
-        
-        setFormData((prevState) => ({
-            ...prevState,
-            [name]: value,
-          }));
-    };
-
-    const profileSubmit = () => {
-        const nameRegex = /^[a-zA-Z ]+$/;
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const phoneRegex = /^[0-9]{10}$/;
     
-        if (!formData.name || !nameRegex.test(formData.name.trim())) {
-            setToastConfig({ ...toastConfig, show: true, text: 'Please Enter a Valid Name' });
-        } else if (!formData.email || !emailRegex.test(formData.email.trim())) {
-            setToastConfig({ ...toastConfig, show: true, text: 'Please Enter a Valid Email' });
-        } else if (!formData.communicationPreference || formData.communicationPreference.trim() === '') {
-            setToastConfig({ ...toastConfig, show: true, text: 'Please select a Communication Preference' });
-        } else {
-            setToastConfig({ ...toastConfig, show: true, text: 'We will get in Touch' });
-        }
-    };
 
   return (
     <>
-        <div onClick={props.hide} className="touch-overlay dBlock" />
+        <div onClick={hide} className="touch-overlay dBlock" />
         <div className="modal dBlock">
             <div className="get-touch-container">
                 <div className="touch-header-container">
                     <div className="heading">
-                        Purchase Artwork
+                        <h5 className="artwork-getTouch_heading">Thank you for your interest in this artwork.</h5>
+                        <p className="artwork-getTouch_subHeading">Please share your details and we will get back to you with the availability and payment link.</p>
                     </div>
-                    <img src="../../assets/touch-close.png" className="get-touch-close-img" onClick={props.hide} />
+                    <img src="../../assets/touch-close.png" className="get-touch-close-img" onClick={hide} />
                 </div>
 
-                <div className="scrollTouch">
+                <div className="scrollTouch-purchase">
                     <div className="get-touch-item-list">
                         <form autocomplete="on" class="react-form-contents">
                             <div>
@@ -76,7 +40,7 @@ const PurchaseArtwork = props => {
                                         aria-required="true" 
                                         autocomplete="false" 
                                         class="form-item-input" 
-                                        placeholder="" 
+                                        placeholder="Please Enter a Name" 
                                         type="text"
                                         name="name"
                                         value={formData.name}
@@ -91,7 +55,7 @@ const PurchaseArtwork = props => {
                                         aria-required="true" 
                                         autocomplete="false" 
                                         class="form-item-input" 
-                                        placeholder="" 
+                                        placeholder="Please Enter a Email" 
                                         type="text"
                                         name="email"
                                         value={formData.email}
@@ -106,12 +70,42 @@ const PurchaseArtwork = props => {
                                         aria-required="true" 
                                         autocomplete="false" 
                                         class="form-item-input" 
-                                        placeholder="" 
+                                        placeholder="Please Enter a Phone" 
                                         type="text"
                                         name="mobile"
                                         // maxLength={15}
                                         value={formData.mobile}
+                                        onChange={handleNumeric}
+                                    />
+                                </div>
+
+                                <div className="form-item-field">
+                                    <label className="form-item-label"><span className="form-item-name">Address</span><span className="form-item-required">(required)</span></label>
+                                    <input 
+                                        aria-invalid="false" 
+                                        aria-required="true" 
+                                        autocomplete="false" 
+                                        class="form-item-input" 
+                                        placeholder="Please Enter a Address" 
+                                        type="text"
+                                        name="address"
+                                        value={formData.address}
                                         onChange={handleInputChange}
+                                    />
+                                </div>
+
+                                <div className="form-item-field">
+                                    <label className="form-item-label"><span className="form-item-name">Pincode</span><span className="form-item-required">(required)</span></label>
+                                    <input 
+                                        aria-invalid="false" 
+                                        aria-required="true" 
+                                        autocomplete="false" 
+                                        class="form-item-input" 
+                                        placeholder="Please Enter a Pincode" 
+                                        type="text"
+                                        name="pincode"
+                                        value={formData.pincode}
+                                        onChange={handleNumeric}
                                     />
                                 </div>
 
@@ -140,6 +134,17 @@ const PurchaseArtwork = props => {
                                             />
                                             Phone
                                         </label>
+                                        <label className="form-item-label-radio">
+                                            <input 
+                                                class="form-item-input-radio" 
+                                                type="radio"
+                                                name="communicationPreference"
+                                                value="whatsapp"
+                                                checked={formData.communicationPreference === 'whatsapp'}
+                                                onChange={handleInputChange}
+                                            />
+                                            WhatsApp
+                                        </label>
                                     </div>
                                 </div>
 
@@ -147,7 +152,7 @@ const PurchaseArtwork = props => {
                                     <label className="form-item-label"><span className="form-item-name">Message</span></label>
                                     <textarea 
                                         class="form-item-textarea" 
-                                        placeholder=""
+                                        placeholder="Please Enter a Message"
                                         value={formData.message}
                                         name="message"
                                         onChange={handleInputChange}
@@ -163,28 +168,13 @@ const PurchaseArtwork = props => {
                                 onClick={() => profileSubmit()} 
                                 className="get-touch-sqs-block-button-element"
                             >
-                                SUBMIT
+                                {waiting ? <PulseLoader color="#FFF" size={10} /> : 'SUBMIT'} 
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        {toastConfig.show ? (
-			<Toast
-				hideHandler={setToastConfig}
-				time={toastConfig.time}
-				tickIcon={toastConfig.showTick}
-				text={toastConfig.text}
-				style={{
-					marginLeft: 'auto',
-					marginRight: 'auto',
-					width: 'fit-content',
-					justifyContent: 'center',
-				}}
-			/>
-		) : null} 
     </>
   );
 };

@@ -109,7 +109,7 @@
     font-size: 1.6em !important;
     line-height: calc(1.4em * (1 + (1 - 2)/25));
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 200;
 }
 
 .image-block-outer-wrapper {

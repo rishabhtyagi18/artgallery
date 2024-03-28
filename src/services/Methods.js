@@ -1,5 +1,5 @@
 // apiConfigs is defined in public/index.html just before closing of head tag
-const baseUrl = "https://gomechanic.app/";
+const baseUrl = "https://mirkwoodbe.thorintech.com/";
 
 function get(url, data = "") {
   let token = "Bearer " + localStorage.getItem("accessToken");

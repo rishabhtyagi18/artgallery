@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Store.css';
 
-const StoreBox = props => {
+const StoreBox = (props) => {
 
     useEffect(() => {
         // Block background scroll when the pop-up is opened
@@ -26,7 +26,7 @@ const StoreBox = props => {
           </div>
           <div className="scroll">
             <div className="box-loayout-contain">
-              <img src="https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1691412075537-JGHQKMILIRPBFPVUV370/IMG_6731.jpg?format=1000w" alt="img" className="storeBox-block-image"  />
+              <img src={props.storeDetails?.artist?.image} alt="img" className="storeBox-block-image"  />
             </div>
           </div>
         </div>

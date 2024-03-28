@@ -87,7 +87,7 @@
     font-size: 1.6rem;
     line-height: calc(1.4em * (1 + (1 - 2)/25));
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 200;
 }
 
 .sqs-layout {
@@ -108,7 +108,7 @@
     font-size: 1.6em !important;
     line-height: calc(1.4em * (1 + (1 - 2)/25));
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 200;
 }
 
 .image-block-outer-wrapper {
@@ -160,7 +160,7 @@
     line-height: 1.8em;
     margin: 1rem 0;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 200;
 }
 
 .about-sqs-block {
@@ -404,7 +404,7 @@
     }
 
     .form-item-input-country {
-        margin-left: 12%;
+        margin-left: calc(100vw - 95vw);
     }
 
     .about-sqsrte-large {

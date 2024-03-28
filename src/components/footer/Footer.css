@@ -63,7 +63,7 @@ h3 {
     color: hsla( 0,0%,100% ,1);
     text-align: center !important;
     line-height: 1.8em;
-    font-weight: 300;
+    font-weight: 200;
 }
 
 
@@ -213,7 +213,7 @@ margin: 0 0 20px !important;
         color: hsla( 0,0%,100% ,1);
         text-align: center !important;
         line-height: 1.8em;
-        font-weight: 300;
+        font-weight: 200;
     }
 
     .align-item-text {
@@ -221,7 +221,7 @@ margin: 0 0 20px !important;
         color: hsla( 0,0%,100% ,1);
         text-align: right !important;
         line-height: 1.8em;
-        font-weight: 300;
+        font-weight: 200;
     }
 
     .footer-subroot-socailmedia {

@@ -1,74 +1,249 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Gallery.css';
 import GalleryFilters from './GalleryFilters';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import DeskFilters from './DeskFilters';
+import { getArtworkDetails, getArtworkStoreDetails, getGalleryFilters, getApplyFiltersData } from '../../services/api';
+import Toast from '../toast/Toast';
 
 const Gallery = (props) => {
+    const location = useLocation();
     const navigate = useNavigate();
-
-    const arr = [{
-        img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1691412075537-JGHQKMILIRPBFPVUV370/IMG_6731.jpg?format=1000w",
-        text: "Madeeha Attari | 36 in X 48 in",
-        subText: "₹120,000.00"
-    },
-    {
-        img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1691410799239-JP3ZGQG08R63YSFBWZ6Q/IMG_8440.jpg?format=1000w",
-        text: "Falguni Mehta | 48 in X 48 in",
-        subText: "₹140,000.00",
-        availability: "sold"
-    },
-    {
-        img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1679900387508-D5MYIB7P3RM3PTXRC14P/SD4.JPG?format=1000w",
-        text: "Shashikant Dhotre | 30 in X 40 in",
-        subText: "₹0.00",
-        subText1: "Enquire Price"
-    },
-    {
-        img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1653027989582-3QWSOTILZS0DCGFL6YU3/SSD5.jpg?format=1000w",
-        text: "Siddharth Shingade | 30 in X 30 in",
-        subText: "₹156,000.00"
-    },
-    {
-        img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1652779483564-QV0OOA5AV9WXEJRUCGF9/YP45.jpg?format=1000w",
-        text: "Yuvraj Patil | 36 in X 24 in",
-        subText: "₹90,000.00"
-    },
-    {
-        img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1652779065711-O6ANR6OJY4QVDN47NMLI/YP44.jpg?format=750w",
-        text: "Yuvraj Patil | 24 in X 36 in",
-        subText: "₹90,000.00"
-    },
-    {
-        img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1652768553365-38SNPECOX8M3NXPBC85K/SKD44.JPG?format=1000w",
-        text: "Shashikant Dhotre | 40 in X 60 in",
-        subText: "",
-        subText1: "Enquire Price",
-        availability: "sold"
-    },
-    {
-        img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1652768354832-O6N9DVQJ7KXKXGX6M5EJ/SKD40.JPG?format=1000w",
-        text: "Shashikant Dhotre | 40 in X 60 in",
-        subText: "₹0.00",
-        subText1: "Enquire Price"
-    },
-    {
-        img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1652768165282-FBUZIBUO2DIPVY2DSC5P/SKD43.JPG?format=1000w",
-        text: "Shashikant Dhotre | 40 in X 60 in",
-        subText: "",
-        subText1: "Enquire Price"
-    }]
-
+    const { skuCode } = useParams();
     const [filters, setFilters] = useState(false);
+    const [resultData, setResultData] = useState([]);
+    const [loader, setLoader] = useState(false);
+    const [filterData, setFilterData] = useState([]);
+    const [applyFilterData, setApplyFilterData] = useState([]);
+    const [toastConfig, setToastConfig] = useState({
+        show: false,
+        text: '',
+        showTick: false,
+        time: 1500,
+    });
+    const [expand, setExpand] = useState(false);
+    const [selectedFilter, setSelectedFilter] = useState([]);
+
+    const [filterState, setFilterState] = useState(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const filters = {};
+        filterData.forEach(filter => {
+            filters[filter.key] = queryParams.getAll(filter.key);
+        });
+        const selected = Object.keys(filters).filter((key) => filters[key].length > 0);
+        setSelectedFilter(selected);
+        return filters;
+    });
+
+    useEffect(() => {
+        getArtworkDetails().then((res) => {
+            if (res.status) {
+                setLoader(false);
+                setResultData(res.data);
+            } else {
+                setToastConfig({
+                    show: true,
+                    text: 'Error in fetching artists',
+                    showTick: false,
+                    time: 1500,
+                });
+            }
+        }, (err) => {
+            setToastConfig({
+                show: true,
+                text: 'Error in fetching artists',
+                showTick: false,
+                time: 1500,
+            });
+        });
+    }, []); // Ensure this dependency array is empty
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoader(true);
+                const response = await getGalleryFilters();
+                setLoader(false);
+                if (response.status === true) {
+                    // navigate(`/stores/${skuCode}`);
+                    setFilterData(response.data);
+                } else {
+                    setToastConfig({
+                        show: true,
+                        text: 'Error in fetching filter data',
+                        showTick: false,
+                        time: 1500,
+                    });
+                }
+            } catch (error) {
+                setLoader(false);
+                console.error('Error fetching filter data:', error);
+                setToastConfig({
+                    show: true,
+                    text: 'Error in fetching filter data',
+                    showTick: false,
+                    time: 1500,
+                });
+            }
+        };
+
+        fetchData();
+    }, [])
+
+    console.log('filterState',filterState);
+
+    useEffect(() => {
+        // Update selectedFilters based on filterState
+        const newlySelectedFilters = Object.keys(filterState).filter(
+            (key) => filterState[key].length > 0
+        );
+        setSelectedFilter(newlySelectedFilters);
+    }, [filterState]);
+
+    const expandDiv = (filterType) => {
+        setExpand((prevFilter) => (prevFilter === filterType ? null : filterType));
+    };
+
+    const handleIndividualCheckboxChange = (filterType, filterValue) => {
+        setFilterState((prevState) => {
+            const updatedFilters = { ...prevState };
+            const filterArray = updatedFilters[filterType] || []; // Initialize as an empty array if undefined
+            const index = filterArray.indexOf(filterValue);
+    
+            if (index === -1) {
+                updatedFilters[filterType] = [...filterArray, filterValue];
+            } else {
+                updatedFilters[filterType] = [
+                    ...filterArray.slice(0, index),
+                    ...filterArray.slice(index + 1),
+                ];
+            }
+    
+            updateURL(updatedFilters);
+            setExpand(false);
+    
+            return updatedFilters;
+        });
+    };
+    
+
+    const updateURL = (filters) => {
+        const queryParams = Object.entries(filters)
+            .filter(([_, values]) => values.length > 0)
+            .map(([filterType, values]) => `${filterType}=${values.join(',')}`)
+            .join('&');
+
+        navigate({
+            pathname: location.pathname,
+            search: queryParams ? `?${queryParams}` : '',
+        });
+
+        getApplyFiltersData(queryParams).then((res) => {
+            if (res.status) {
+                setLoader(false);
+                setResultData(res.data);
+            } else {
+                setToastConfig({
+                    show: true,
+                    text: 'Error in fetching artists',
+                    showTick: false,
+                    time: 1500,
+                });
+            }
+        }, (err) => {
+            setToastConfig({
+                show: true,
+                text: 'Error in fetching artists',
+                showTick: false,
+                time: 1500,
+            });
+        });
+    };
+
+    const clearAllFilters = () => {
+        const emptyFilters = {};
+        filterData.forEach(filter => {
+            emptyFilters[filter.key] = [];
+        });
+        setFilterState(emptyFilters);
+        // Update the URL without query parameters
+        updateURL({});
+        // Clear the selected filter type
+        setSelectedFilter([]);
+    };
+
+    const handleFilterClose = (filterType) => {
+        setFilterState((prevState) => {
+            const updatedFilters = { ...prevState, [filterType]: [] };
+
+            // Remove the filter from selectedFilter
+            setSelectedFilter((prevFilters) => prevFilters.filter((filter) => filter !== filterType));
+
+            // Update the URL
+            updateURL(updatedFilters);
+            setExpand(false);
+            return updatedFilters;
+        });
+    };
+    
+
+    const handleStoreDetail = async (skuCode) => {
+        try {
+            let sku = skuCode.toLowerCase();
+            setLoader(true);
+            const response = await getArtworkStoreDetails(sku);
+            setLoader(false);
+            if (response.status === true) {
+                navigate(`/stores/${sku}`);
+            } else {
+                setToastConfig({
+                    show: true,
+                    text: 'Error in fetching store details',
+                    showTick: false,
+                    time: 1500,
+                });
+                navigate('/error-page');
+            }
+        } catch (error) {
+            setLoader(false);
+            console.error('Error fetching store details:', error);
+            setToastConfig({
+                show: true,
+                text: 'Error in fetching store details',
+                showTick: false,
+                time: 1500,
+            });
+            navigate('/error-page');
+        }
+    };
 
     const [firstHalfContent, secondHalfContent, thirdHalfContent] = [
-        arr.slice(0, Math.ceil(arr.length / 3)),
-        arr.slice(Math.ceil(arr.length / 3), Math.ceil((2 * arr.length) / 3)),
-        arr.slice(Math.ceil((2 * arr.length) / 3)),
+        resultData.slice(0, Math.ceil(resultData.length / 3)),
+        resultData.slice(Math.ceil(resultData.length / 3), Math.ceil((2 * resultData.length) / 3)),
+        resultData.slice(Math.ceil((2 * resultData.length) / 3)),
     ];
 
 return (
     <>  
+        {loader ? (
+            <div className="loader-component-iu">
+                <div className="loader-iu"></div>
+            </div>
+        ) : null}
+        {toastConfig.show ? (
+			<Toast
+				hideHandler={setToastConfig}
+				time={toastConfig.time}
+				tickIcon={toastConfig.showTick}
+				text={toastConfig.text}
+				style={{
+					marginLeft: 'auto',
+					marginRight: 'auto',
+					width: 'fit-content',
+					justifyContent: 'center',
+				}}
+			/>
+		) : null} 
         {filters &&
             <GalleryFilters 
                 hide={() => {
@@ -76,6 +251,7 @@ return (
                     const z = document.getElementsByTagName('body');
                     z[0].style.overflow = 'scroll';
                 }}
+                arrFilters={filterData}
             />
         }
         <div className="gallery-root" style={{marginTop: "95px"}}>
@@ -87,14 +263,23 @@ return (
                 </div>
             </div>
 
-            <DeskFilters />
+            <DeskFilters 
+                arrFilters={filterData}
+                handleFilterClose={handleFilterClose}
+                expandDiv={expandDiv}
+                clearAllFilters={clearAllFilters}
+                handleIndividualCheckboxChange={handleIndividualCheckboxChange}
+                selectedFilter={selectedFilter}
+                expand={expand}
+                filterState={filterState}
+            />
             
             <div className="gallery-mob-container">
-                {arr.map((item, index) => (
-                    <div className="gallery-content-wrapper" key={index}>
+                {resultData.map((item, index) => (
+                    <div className="gallery-content-wrapper" key={item.sku}>
                         <div className="sqs-layout">
-                            <div onClick={() => navigate('/store/p/fgm8-ftmm5-mtrr2-w7x56')} className="gallery-block-outer-wrapper">
-                                <img src={item.img} alt={item.text} className="gallery-block-image" />
+                            <div onClick={() => handleStoreDetail(item.sku)} className="gallery-block-outer-wrapper">
+                                <img src={item.images[0]} alt={item.text} className="gallery-block-image" />
                                 {item.availability && 
                                     <div>
                                         <div className="gallery-layout-stock">{item.availability}</div>
@@ -102,9 +287,9 @@ return (
                                 }
                             </div>
                             <div className="gallery-image-caption">
-                                <div onClick={() => navigate('/store/p/skd23-22phx')}>{item.text}</div>
-                                {item.subText && <div className="product-price">{item.subText}</div>}
-                                {item.subText1 && <div className="summary-price">{item.subText1}</div>}
+                                <div onClick={() => handleStoreDetail(item.sku)}>{item.artist?.name} | {item.width} X {item.height}</div>
+                                <div className="product-price">{item.price > 0 ? `₹${item.price}` : 'Enquire Price' }</div>
+                                {/* {item.subText1 && <div className="summary-price">{item.subText1}</div>} */}
                             </div>
                         </div>
                     </div>
@@ -116,8 +301,8 @@ return (
                 {firstHalfContent.map((item, index) => (
                     <div className="gallery-content-wrapper" key={index}>
                         <div className="sqs-layout">
-                            <div onClick={() => navigate('/store/p/fgm8-ftmm5-mtrr2-w7x56')} className="gallery-block-outer-wrapper">
-                                <img src={item.img} alt={item.text} className="gallery-block-image" />
+                            <div onClick={() => handleStoreDetail(item.sku)} className="gallery-block-outer-wrapper">
+                                <img src={item.images[0]} alt={item.text} className="gallery-block-image" />
                                 {item.availability && 
                                     <div>
                                         <div className="gallery-layout-stock">{item.availability}</div>
@@ -125,9 +310,9 @@ return (
                                 }
                             </div>
                             <div className="gallery-image-caption">
-                                <div onClick={() => navigate('/store/p/skd23-22phx')}>{item.text}</div>
-                                {item.subText && <div className="product-price">{item.subText}</div>}
-                                {item.subText1 && <div className="summary-price">{item.subText1}</div>}
+                                <div onClick={() => handleStoreDetail(item.sku)}>{item.artist?.name} | {item.width} X {item.height}</div>
+                                <div className="product-price">{item.price > 0 ? `₹${item.price}` : 'Enquire Price' }</div>
+                                {/* {item.subText1 && <div className="summary-price">{item.subText1}</div>} */}
                             </div>
                         </div>
                     </div>
@@ -138,8 +323,8 @@ return (
                     {secondHalfContent.map((item, index) => (
                     <div className="gallery-content-wrapper" key={index}>
                         <div className="sqs-layout">
-                            <div onClick={() => navigate('/store/p/fgm8-ftmm5-mtrr2-w7x56')} className="gallery-block-outer-wrapper">
-                                <img src={item.img} alt={item.text} className="gallery-block-image" />
+                            <div onClick={() => handleStoreDetail(item.sku)} className="gallery-block-outer-wrapper">
+                                <img src={item.images[0]} alt={item.text} className="gallery-block-image" />
                                 {item.availability && 
                                     <div>
                                         <div className="gallery-layout-stock">{item.availability}</div>
@@ -147,9 +332,9 @@ return (
                                 }
                             </div>
                             <div className="gallery-image-caption">
-                                <div onClick={() => navigate('/store/p/skd23-22phx')}>{item.text}</div>
-                                {item.subText && <div className="product-price">{item.subText}</div>}
-                                {item.subText1 && <div className="summary-price">{item.subText1}</div>}
+                                <div onClick={() => handleStoreDetail(item.sku)}>{item.artist?.name} | {item.width} X {item.height}</div>
+                                <div className="product-price">{item.price > 0 ? `₹${item.price}` : 'Enquire Price' }</div>
+                                {/* {item.subText1 && <div className="summary-price">{item.subText1}</div>} */}
                             </div>
                         </div>
                     </div>
@@ -160,8 +345,8 @@ return (
                     {thirdHalfContent.map((item, index) => (
                     <div className="gallery-content-wrapper" key={index}>
                         <div className="sqs-layout">
-                            <div onClick={() => navigate('/store/p/fgm8-ftmm5-mtrr2-w7x56')} className="gallery-block-outer-wrapper">
-                                <img src={item.img} alt={item.text} className="gallery-block-image" />
+                            <div onClick={() => handleStoreDetail(item.sku)} className="gallery-block-outer-wrapper">
+                                <img src={item.images[0]} alt={item.text} className="gallery-block-image" />
                                 {item.availability && 
                                     <div>
                                         <div className="gallery-layout-stock">{item.availability}</div>
@@ -169,9 +354,9 @@ return (
                                 }
                             </div>
                             <div className="gallery-image-caption">
-                                <div onClick={() => navigate('/store/p/skd23-22phx')}>{item.text}</div>
-                                {item.subText && <div className="product-price">{item.subText}</div>}
-                                {item.subText1 && <div className="summary-price">{item.subText1}</div>}
+                                <div onClick={() => handleStoreDetail(item.sku)}>{item.artist?.name} | {item.width} X {item.height}</div>
+                                <div className="product-price">{item.price > 0 ? `₹${item.price}` : 'Enquire Price' }</div>
+                                {/* {item.subText1 && <div className="summary-price">{item.subText1}</div>} */}
                             </div>
                         </div>
                     </div>
