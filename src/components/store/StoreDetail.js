@@ -340,7 +340,7 @@ return (
                                         e.preventDefault();
                                         setlayout(true);
                                     }} 
-                                    src={storeDetails?.artist?.image} 
+                                    src={storeDetails?.images?.[0]} 
                                     alt="img" 
                                     className="storeDetail-block-image" 
                                 />
