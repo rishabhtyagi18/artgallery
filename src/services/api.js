@@ -13,6 +13,11 @@ export const getArtist = async (payload) => {
 	return res;
 };
 
+export const getArtistSearch = async (payload) => {
+	const res = await get(`api/moksha/v1/artists?search=`, payload);
+	return res;
+};
+
 export const getArtistDetails = async (payload) => {
 	const res = await get(`api/moksha/v1/artist?pageName=`, payload);
 	return res;

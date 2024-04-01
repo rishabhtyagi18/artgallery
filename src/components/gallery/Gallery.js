@@ -23,6 +23,7 @@ const Gallery = (props) => {
     });
     const [expand, setExpand] = useState(false);
     const [selectedFilter, setSelectedFilter] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const [filterState, setFilterState] = useState(() => {
         const queryParams = new URLSearchParams(location.search);
@@ -63,6 +64,25 @@ const Gallery = (props) => {
             });
         });
     }, []); // Ensure this dependency array is empty
+
+    // Handler function to update search query
+    const handleSearchInputChange = (event) => {
+        setSearchQuery(event.target.value);
+        // console.log("event.target.value",event.target.value);
+        updateURL(filterState, event.target.value);
+    };
+
+    const handleSearchInputChangeMob = (event) => {
+        setSearchQuery(event.target.value);
+        // console.log("event.target.value",event.target.value);
+        updateURL(filterState, event.target.value);
+        hideGalleryFilterPopUp();
+    };
+
+    const handleClearSearch = () => {
+        setSearchQuery('');
+        updateURL(filterState, ''); // Clear search query
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -131,18 +151,23 @@ const Gallery = (props) => {
     };
     
 
-    const updateURL = (filters) => {
+    const updateURL = (filters, searchQuery = '') => {
         const queryParams = Object.entries(filters)
             .filter(([_, values]) => values.length > 0)
             .map(([filterType, values]) => `${filterType}=${values.join(',')}`)
             .join('&');
 
+        // console.log("searchQuery",searchQuery);
+        const searchParams = searchQuery ? `search=${searchQuery}` : ''; // Include searchQuery in the query params
+        const queryString = queryParams || searchParams ? `${[queryParams, searchParams].filter(Boolean).join('&')}` : ''; // Concatenate query params
+    
         navigate({
             pathname: location.pathname,
-            search: queryParams ? `?${queryParams}` : '',
+            search: queryString ? `?${queryString}` : '',
         });
-
-        getApplyFiltersData(queryParams).then((res) => {
+    
+        // Call getApplyFiltersData with both filter parameters and search query
+        getApplyFiltersData(queryString).then((res) => {
             if (res.status) {
                 setLoader(false);
                 setResultData(res.data);
@@ -163,6 +188,7 @@ const Gallery = (props) => {
             });
         });
     };
+    
 
     const clearAllFilters = () => {
         const emptyFilters = {};
@@ -261,6 +287,9 @@ return (
                 selectedFilter={selectedFilter}
                 expand={expand}
                 filterState={filterState}
+                searchQuery={searchQuery}
+                onSearchInputChange={handleSearchInputChangeMob}
+                handleClearSearch={handleClearSearch}
             />
         }
         <div className="gallery-root" style={{marginTop: "95px"}}>
@@ -281,6 +310,9 @@ return (
                 selectedFilter={selectedFilter}
                 expand={expand}
                 filterState={filterState}
+                searchQuery={searchQuery}
+                onSearchInputChange={handleSearchInputChange}
+                handleClearSearch={handleClearSearch}
             />
             
             <div className="gallery-mob-container">

@@ -231,13 +231,15 @@ return (
                             <h2>Featured Artist</h2>
 
                             <div className="summary-item-list summary-desk-network-root-feature">
-                                {resultData.map((item, index) => ( 
-                                    <div className="image-block-outer-wrapper" key={item.artist?.id} onClick={() => handleArtistDetail(item.pageName)}>
-                                        <img src={item.artist?.image} alt="artist" className="sqs-block-image" />
-                                        <div className="image-caption">
-                                            <p>{item.artist?.name}</p>
+                                {resultData.map((item, index) => (
+                                    item.artist && item.artist.image && (
+                                        <div className="image-block-outer-wrapper" key={item.artist?.id} onClick={() => handleArtistDetail(item.artist?.pageName)}>
+                                            <img src={item.artist?.image} alt="artist" className="sqs-block-image" />
+                                            <div className="image-caption">
+                                                <p>{item.artist?.name}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )
                                 ))}
                             </div>
                         </div>
@@ -246,7 +248,7 @@ return (
 
                     <div className="home-content-wrapper">
                         <div className="sqs-layout">
-                            <a href="/artists" className="sqs-block-button-element">VIEW ARTIST</a>
+                            <a href="/artists" className="sqs-block-button-element">VIEW ARTISTS</a>
                         </div>
                     </div>
                 </div>
@@ -432,7 +434,7 @@ return (
 
                     <div className="home-content-wrapper">
                         <div className="sqs-layout">
-                            <a href="/artists/ajay-de" className="sqs-block-button-element">VIEW ARTIST</a>
+                            <a href="/artists/ajay-de" className="sqs-block-button-element">VIEW ARTISTS</a>
                         </div>
                     </div>
                 </div>
@@ -766,12 +768,6 @@ return (
                                     </div>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-
-                    <div className="home-content-wrapper">
-                        <div className="sqs-layout">
-                            <a href="/artists/ajay-de" className="sqs-block-button-element">VIEW ARTIST</a>
                         </div>
                     </div>
                 </div>

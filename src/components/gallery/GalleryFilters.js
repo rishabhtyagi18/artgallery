@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './GalleryFilters.css';
 
-const GalleryFilters = ({ arrFilters, handleFilterClose, clearAllFilters, handleIndividualCheckboxChange, selectedFilter, expand, expandDiv, filterState, hide }) => {
+const GalleryFilters = ({ arrFilters, handleFilterClose, clearAllFilters, handleIndividualCheckboxChange, selectedFilter, expand, expandDiv, filterState, hide, searchQuery, onSearchInputChange, handleClearSearch }) => {
 
 return (
     <>  
@@ -66,7 +66,17 @@ return (
                                 type="text"
                                 placeholder="Search"
                                 className="custom-items-input"
+                                // value={searchQuery}
+                                // onChange={onSearchInputChange}
+                                onKeyDown={(e) => 
+                                    {
+                                        if (e.keyCode === 13) {
+                                            onSearchInputChange(e);
+                                        }
+                                    }
+                                }
                             />
+                            {/* {searchQuery !== '' && <img onClick={() => handleClearSearch()} className="filter-selected-close" src="../../assets/close.png" />} */}
                         </div>
                     </div>
                 </div>

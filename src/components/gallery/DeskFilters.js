@@ -1,7 +1,7 @@
 import React from "react";
 import './Gallery.css';
 
-const DeskFilters = ({ arrFilters, handleFilterClose, clearAllFilters, handleIndividualCheckboxChange, selectedFilter, expand, expandDiv, filterState }) => {
+const DeskFilters = ({ arrFilters, handleFilterClose, clearAllFilters, handleIndividualCheckboxChange, selectedFilter, expand, expandDiv, filterState, searchQuery, onSearchInputChange, handleClearSearch }) => {
 
     return (
         <>
@@ -60,7 +60,10 @@ const DeskFilters = ({ arrFilters, handleFilterClose, clearAllFilters, handleInd
                                         type="text"
                                         placeholder="Search"
                                         className="custom-items-input"
+                                        value={searchQuery}
+                                        onChange={onSearchInputChange}
                                     />
+                                    {searchQuery !== '' && <img onClick={() => handleClearSearch()} className="filter-selected-close" src="../../assets/close.png" />}
                                 </div>
                             </div>
                         </div>

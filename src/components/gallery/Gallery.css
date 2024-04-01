@@ -145,7 +145,7 @@
 .loader-component-iu {
     width: 100%;
     height: 100%;
-    background: #ffffff;
+    background: hsla( 0,0%,6.2745098039215685% ,1);
     z-index: 6;
     position: fixed;
     overflow: hidden;
@@ -154,12 +154,12 @@
 
 .loader-iu {
     position: absolute;
-    border: 4px solid #a1c0aa;
-    border-top: 4px solid #2E8948;
+    border: 4px solid hsla( 24.97854077253219,92.82868525896416%,49.2156862745098% ,1);
+    border-top: 4px solid lightgray;
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    left: 44%;
+    left: 50%;
     top: 47%;
     transform: translate(-50%, -50%);
     animation: spin 2s linear infinite;

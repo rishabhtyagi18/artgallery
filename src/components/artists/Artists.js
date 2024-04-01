@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './Artists.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getArtist, getArtistDetails } from '../../services/api';
+import { getArtist, getArtistDetails, getArtistSearch } from '../../services/api';
 import Toast from '../toast/Toast';
 
 const Artists = (props) => {
@@ -38,7 +38,55 @@ const Artists = (props) => {
               time: 1500,
             });
           })
-    }, []);
+    }, [searchTxt]);
+
+     // Debouncing function
+     const debounce = (func, delay) => {
+        let timeoutId;
+        return function() {
+            const context = this;
+            const args = arguments;
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => func.apply(context, args), delay);
+        };
+    };
+
+    // Debounced function to fetch search results
+    const debouncedSearch = debounce((searchText) => {
+        setLoader(true);
+        getArtistSearch(searchText)
+            .then((res) => {
+                if (res.status) {
+                    setLoader(false);
+                    setResultData(res.data);
+                } else {
+                    setToastConfig({
+                        show: true,
+                        text: 'Error in fetching search artists',
+                        showTick: false,
+                        time: 1500,
+                    });
+                }
+            })
+            .catch((err) => {
+                setLoader(false);
+                setToastConfig({
+                    show: true,
+                    text: 'Error in fetching search artists',
+                    showTick: false,
+                    time: 1500,
+                });
+            });
+    }, 500); // Adjust delay as needed
+
+    const handleSearch = (searchText) => {
+        setSearchTxt(searchText);
+        debouncedSearch(searchText);
+    };
+
+    const handleClearSearch = () => {
+        setSearchTxt('');
+    }
 
     const handleArtistDetail = async (artistName) => {
         try {
@@ -104,10 +152,10 @@ return (
                             placeholder="Search"
                             className="custom-items-input"
                             value={searchTxt}
-                            onChange={(e) => setSearchTxt(e.target.value)}
+                            onChange={(e) => handleSearch(e.target.value)}
                         />
                         {searchTxt !== '' && <img 
-                            onClick={() => setSearchTxt('')}
+                            onClick={() => handleClearSearch()}
                             className="search-selected-close" src="../../assets/close.png" />}
                     </div>
                 </div>
