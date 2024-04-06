@@ -62,7 +62,7 @@ const StoreDetail = ({ }) => {
         show: false,
         text: '',
         showTick: false,
-        time: 1500,
+        time: 2500,
     });
 
     useEffect(() => {
@@ -80,7 +80,7 @@ const StoreDetail = ({ }) => {
                         show: true,
                         text: 'Error in fetching store details',
                         showTick: false,
-                        time: 1500,
+                        time: 2500,
                     });
                     navigate('/error-page');
                 }
@@ -91,7 +91,7 @@ const StoreDetail = ({ }) => {
                     show: true,
                     text: 'Error in fetching store details',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
                 navigate('/error-page');
             }
@@ -115,10 +115,10 @@ const StoreDetail = ({ }) => {
     //     }
     // };
 
-    useEffect(() => {
-        const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-        setCartQuantity(existingCart.length);
-    }, []);
+    // useEffect(() => {
+    //     const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+    //     setCartQuantity(existingCart.length);
+    // }, []);
 
     const handleInputChange = (event) => {
         const { name, value, type } = event.target;
@@ -158,14 +158,10 @@ const StoreDetail = ({ }) => {
 
     const hidePurchaseArtwork = () => {
         setPurchaseArt(false);
-        const z = document.getElementsByTagName('body');
-        z[0].style.overflow = 'scroll';
     }
 
     const hideGetTouch = () => {
         setGetTouch(false);
-        const z = document.getElementsByTagName('body');
-        z[0].style.overflow = 'scroll';
     }
 
     const profileSubmit = () => {
@@ -203,7 +199,7 @@ const StoreDetail = ({ }) => {
                     show: true,
                     text: 'We will get in Touch',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
                 setFormData({
                     name: '',
@@ -221,7 +217,7 @@ const StoreDetail = ({ }) => {
                     show: true,
                     text: 'Issue reported successfully',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
             }
         }, (err) => {
@@ -230,7 +226,7 @@ const StoreDetail = ({ }) => {
             show: true,
             text: 'Something went wrong',
             showTick: false,
-            time: 1500,
+            time: 2500,
             });
         })
     };
@@ -267,7 +263,7 @@ const StoreDetail = ({ }) => {
                     show: true,
                     text: 'We will get in Touch',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
                 setGetTouchFormData({
                     name: '',
@@ -285,7 +281,7 @@ const StoreDetail = ({ }) => {
                     show: true,
                     text: 'Issue reported successfully',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
             }
         }, (err) => {
@@ -294,7 +290,7 @@ const StoreDetail = ({ }) => {
             show: true,
             text: 'Something went wrong',
             showTick: false,
-            time: 1500,
+            time: 2500,
             });
         })
     };
@@ -313,7 +309,11 @@ return (
         }
         {purchaseArt &&
             <PurchaseArtwork
-                hide={() => {hidePurchaseArtwork()}}
+                hide={() => {
+                    hidePurchaseArtwork();
+                    const z = document.getElementsByTagName('body');
+                    z[0].style.overflow = 'scroll';
+                }}
                 profileSubmit={profileSubmit}
                 waiting={waiting}
                 formData={formData}
@@ -323,7 +323,11 @@ return (
         }
         {getTouch && 
             <GetInTouch
-                hide={() => {hideGetTouch();}}
+                hide={() => {
+                    hideGetTouch();
+                    const z = document.getElementsByTagName('body');
+                    z[0].style.overflow = 'scroll';
+                }}
                 profileSubmitGetTouch={profileSubmitGetTouch}
                 getTouchformData={getTouchformData}
                 handleInputChangeGetTouch={handleInputChangeGetTouch}
@@ -353,7 +357,7 @@ return (
                         <h2 className="storeDetail-details-title">{storeDetails?.artist?.name}</h2>
                         <div className="productItem-details-checkout">
                             <div className="productItem-product-price">
-                                <div className="storedetail-product-price">₹{storeDetails?.price} (excluding taxes)</div>
+                                <div className="storedetail-product-price">{storeDetails.price > 0 ? `₹${Math.floor(storeDetails.price).toLocaleString('en-IN')} (excluding taxes)` : 'Enquire Price' }</div>
                             </div>
 
                             <div className="productItem-details-excerpt">

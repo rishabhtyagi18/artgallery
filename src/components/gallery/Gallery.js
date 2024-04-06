@@ -19,7 +19,7 @@ const Gallery = (props) => {
         show: false,
         text: '',
         showTick: false,
-        time: 1500,
+        time: 2500,
     });
     const [expand, setExpand] = useState(false);
     const [selectedFilter, setSelectedFilter] = useState([]);
@@ -52,7 +52,7 @@ const Gallery = (props) => {
                     show: true,
                     text: 'Error in fetching artists',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
             }
         }, (err) => {
@@ -60,7 +60,7 @@ const Gallery = (props) => {
                 show: true,
                 text: 'Error in fetching artists',
                 showTick: false,
-                time: 1500,
+                time: 2500,
             });
         });
     }, []); // Ensure this dependency array is empty
@@ -98,7 +98,7 @@ const Gallery = (props) => {
                         show: true,
                         text: 'Error in fetching filter data',
                         showTick: false,
-                        time: 1500,
+                        time: 2500,
                     });
                 }
             } catch (error) {
@@ -108,7 +108,7 @@ const Gallery = (props) => {
                     show: true,
                     text: 'Error in fetching filter data',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
             }
         };
@@ -176,7 +176,7 @@ const Gallery = (props) => {
                     show: true,
                     text: 'Error in fetching artists',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
             }
         }, (err) => {
@@ -184,7 +184,7 @@ const Gallery = (props) => {
                 show: true,
                 text: 'Error in fetching artists',
                 showTick: false,
-                time: 1500,
+                time: 2500,
             });
         });
     };
@@ -232,7 +232,7 @@ const Gallery = (props) => {
                     show: true,
                     text: 'Error in fetching store details',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
                 navigate('/error-page');
             }
@@ -243,7 +243,7 @@ const Gallery = (props) => {
                 show: true,
                 text: 'Error in fetching store details',
                 showTick: false,
-                time: 1500,
+                time: 2500,
             });
             navigate('/error-page');
         }
@@ -329,7 +329,7 @@ return (
                             </div>
                             <div className="gallery-image-caption">
                                 <div onClick={() => handleStoreDetail(item.sku)}>{item.artist?.name} | {item.width} X {item.height}</div>
-                                <div className="product-price">{item.price > 0 ? `₹${item.price}` : 'Enquire Price' }</div>
+                                <div className="product-price">{item.price > 0 ? `₹${Math.floor(item.price).toLocaleString('en-IN')}` : 'Enquire Price' }</div>
                                 {/* {item.subText1 && <div className="summary-price">{item.subText1}</div>} */}
                             </div>
                         </div>
@@ -352,7 +352,7 @@ return (
                             </div>
                             <div className="gallery-image-caption">
                                 <div onClick={() => handleStoreDetail(item.sku)}>{item.artist?.name} | {item.width} X {item.height}</div>
-                                <div className="product-price">{item.price > 0 ? `₹${item.price}` : 'Enquire Price' }</div>
+                                <div className="product-price">{item.price > 0 ? `₹${Math.floor(item.price).toLocaleString('en-IN')}` : 'Enquire Price' }</div>
                                 {/* {item.subText1 && <div className="summary-price">{item.subText1}</div>} */}
                             </div>
                         </div>
@@ -374,7 +374,7 @@ return (
                             </div>
                             <div className="gallery-image-caption">
                                 <div onClick={() => handleStoreDetail(item.sku)}>{item.artist?.name} | {item.width} X {item.height}</div>
-                                <div className="product-price">{item.price > 0 ? `₹${item.price}` : 'Enquire Price' }</div>
+                                <div className="product-price">{item.price > 0 ? `₹${Math.floor(item.price).toLocaleString('en-IN')}` : 'Enquire Price' }</div>
                                 {/* {item.subText1 && <div className="summary-price">{item.subText1}</div>} */}
                             </div>
                         </div>
@@ -396,7 +396,7 @@ return (
                             </div>
                             <div className="gallery-image-caption">
                                 <div onClick={() => handleStoreDetail(item.sku)}>{item.artist?.name} | {item.width} X {item.height}</div>
-                                <div className="product-price">{item.price > 0 ? `₹${item.price}` : 'Enquire Price' }</div>
+                                <div className="product-price">{item.price > 0 ? `₹${Math.floor(item.price).toLocaleString('en-IN')}` : 'Enquire Price' }</div>
                                 {/* {item.subText1 && <div className="summary-price">{item.subText1}</div>} */}
                             </div>
                         </div>

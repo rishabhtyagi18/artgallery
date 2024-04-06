@@ -31,7 +31,7 @@ const About = (props) => {
         show: false,
         text: '',
         showTick: false,
-        time: 1500,
+        time: 2500,
     });
     const [expand, setExpand] = useState(false);
 
@@ -95,7 +95,7 @@ const About = (props) => {
                     show: true,
                     text: 'Thank you for connecting with Moksh Art Gallery. We will get in touch with you soon.',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
                 setFormData({
                     name: '',
@@ -109,7 +109,7 @@ const About = (props) => {
                     show: true,
                     text: 'Issue reported successfully',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
             }
         }, (err) => {
@@ -118,7 +118,7 @@ const About = (props) => {
             show: true,
             text: 'Something went wrong',
             showTick: false,
-            time: 1500,
+            time: 2500,
             });
         })
     };
@@ -214,7 +214,7 @@ return (
                                 </div>
 
                                 <div className="form-item-field">
-                                    <label className="form-item-label"><span className="form-item-name">Phone</span></label>
+                                    <label className="form-item-label"><span className="form-item-name">Phone</span><span className="form-item-required">(required)</span></label>
 
                                     <div className="phone-container form-item-input">
                                         <div className="flag-container" onClick={() => setExpand(!expand)}>

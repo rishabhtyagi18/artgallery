@@ -16,7 +16,7 @@ const Home = (props) => {
         show: false,
         text: '',
         showTick: false,
-        time: 1500,
+        time: 2500,
     });
     const mobArr = [{
         img: "https://images.squarespace-cdn.com/content/v1/5ee1e788c9545837ba7c4bde/1593070915285-2L0QL7BL1P5NPBMDXF8I/1shashikantdhotre.jpg?format=2500w",
@@ -69,7 +69,7 @@ const Home = (props) => {
                 show: true,
                 text: 'Error in fetching artists',
                 showTick: false,
-                time: 1500,
+                time: 2500,
               });
             }
           }, (err) => {
@@ -77,7 +77,7 @@ const Home = (props) => {
               show: true,
               text: 'Error in fetching artists',
               showTick: false,
-              time: 1500,
+              time: 2500,
             });
           })
     }, []);
@@ -95,7 +95,7 @@ const Home = (props) => {
                     show: true,
                     text: 'Error in fetching store details',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
                 navigate('/error-page');
             }
@@ -106,7 +106,7 @@ const Home = (props) => {
                 show: true,
                 text: 'Error in fetching store details',
                 showTick: false,
-                time: 1500,
+                time: 2500,
             });
             navigate('/error-page');
         }
@@ -124,7 +124,7 @@ const Home = (props) => {
                     show: true,
                     text: 'Error in fetching artist details',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
                 navigate('/error-page');
             }
@@ -135,7 +135,7 @@ const Home = (props) => {
                 show: true,
                 text: 'Error in fetching artist details',
                 showTick: false,
-                time: 1500,
+                time: 2500,
             });
             navigate('/error-page');
         }
@@ -209,7 +209,7 @@ return (
                                         </div>
                                         <div className="summary-image-caption">
                                             <a href="/store/p/skd23-22phx">{item.artist?.name} | {item.width} X {item.height}</a>
-                                            <div className="product-price">{item.price > 0 ? `₹${item.price}` : 'Enquire Price' }</div>
+                                            <div className="product-price">{item.price > 0 ? `₹${Math.floor(item.price).toLocaleString('en-IN')}` : 'Enquire Price' }</div>
                                             {/* <div className="summary-price">Enquire Price</div> */}
                                         </div>
                                     </div>
@@ -780,7 +780,7 @@ return (
         //     clickCallBtnEvent(props?.user?.id, props.cardetails?.model?.id, 'homepage', props.isAMCUser)
         //   }}
         >
-          <a href="tel:9819052003">
+          <a href="https://api.whatsapp.com/send?phone=919819052003&text=Hi&source=&data=">
             <img src="../../assets/whatsapp-logo.png" alt='connect'/>
           </a>
         </div>

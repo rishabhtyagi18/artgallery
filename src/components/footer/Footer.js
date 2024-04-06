@@ -10,7 +10,7 @@ const Footer = (props) => {
         show: false,
         text: '',
         showTick: false,
-        time: 1500,
+        time: 2500,
     });
     const [waiting, setWaiting] = useState(false);
 
@@ -45,7 +45,7 @@ const Footer = (props) => {
                     show: true,
                     text: 'You have been added successfully to our mailing list. Thank you!',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
                 // navigate(`/builders/${builderName}/${builderID}`)
             } else {
@@ -54,7 +54,7 @@ const Footer = (props) => {
                     show: true,
                     text: 'Issue reported successfully',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
             }
         }, (err) => {
@@ -63,7 +63,7 @@ const Footer = (props) => {
             show: true,
             text: 'Something went wrong',
             showTick: false,
-            time: 1500,
+            time: 2500,
             });
         })
     }

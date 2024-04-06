@@ -12,7 +12,7 @@ const ArtAdvisory = (props) => {
         show: false,
         text: '',
         showTick: false,
-        time: 1500,
+        time: 2500,
     });
 
     useEffect(() => {

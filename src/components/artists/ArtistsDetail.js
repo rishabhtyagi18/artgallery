@@ -18,7 +18,7 @@ const ArtistsDetail = (props) => {
         show: false,
         text: '',
         showTick: false,
-        time: 1500,
+        time: 2500,
     });
 
     // console.log('artistName',dynamicValue);
@@ -37,7 +37,7 @@ const ArtistsDetail = (props) => {
                         show: true,
                         text: 'Error in fetching artist details',
                         showTick: false,
-                        time: 1500,
+                        time: 2500,
                     });
                     navigate('/error-page');
                 }
@@ -48,7 +48,7 @@ const ArtistsDetail = (props) => {
                     show: true,
                     text: 'Error in fetching artist details',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
                 navigate('/error-page');
             }

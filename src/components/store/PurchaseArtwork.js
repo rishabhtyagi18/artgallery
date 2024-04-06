@@ -64,7 +64,10 @@ const PurchaseArtwork = ({ profileSubmit, waiting, formData, handleInputChange, 
                                 </div>
 
                                 <div className="form-item-field">
-                                    <label className="form-item-label"><span className="form-item-name">Phone</span></label>
+                                    {formData.communicationPreference === 'phone' ?
+                                        <label className="form-item-label"><span className="form-item-name">Phone</span><span className="form-item-required">(required)</span></label>:
+                                        <label className="form-item-label"><span className="form-item-name">Phone</span></label>
+                                    }
                                     <input 
                                         aria-invalid="false" 
                                         aria-required="true" 

@@ -14,7 +14,7 @@ const Artists = (props) => {
         show: false,
         text: '',
         showTick: false,
-        time: 1500,
+        time: 2500,
     });
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const Artists = (props) => {
                 show: true,
                 text: 'Error in fetching artists',
                 showTick: false,
-                time: 1500,
+                time: 2500,
               });
             }
           }, (err) => {
@@ -35,7 +35,7 @@ const Artists = (props) => {
               show: true,
               text: 'Error in fetching artists',
               showTick: false,
-              time: 1500,
+              time: 2500,
             });
           })
     }, [searchTxt]);
@@ -64,7 +64,7 @@ const Artists = (props) => {
                         show: true,
                         text: 'Error in fetching search artists',
                         showTick: false,
-                        time: 1500,
+                        time: 2500,
                     });
                 }
             })
@@ -74,7 +74,7 @@ const Artists = (props) => {
                     show: true,
                     text: 'Error in fetching search artists',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
             });
     }, 500); // Adjust delay as needed
@@ -100,7 +100,7 @@ const Artists = (props) => {
                     show: true,
                     text: 'Error in fetching artist details',
                     showTick: false,
-                    time: 1500,
+                    time: 2500,
                 });
                 navigate('/error-page');
             }
@@ -111,7 +111,7 @@ const Artists = (props) => {
                 show: true,
                 text: 'Error in fetching artist details',
                 showTick: false,
-                time: 1500,
+                time: 2500,
             });
             navigate('/error-page');
         }
