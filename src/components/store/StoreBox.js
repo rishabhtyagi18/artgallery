@@ -26,7 +26,7 @@ const StoreBox = (props) => {
           </div>
           <div className="scroll">
             <div className="box-loayout-contain">
-              <img src={props.storeDetails?.artist?.image} alt="img" className="storeBox-block-image"  />
+              <img src={props.storeDetails?.images?.[0]} alt="img" className="storeBox-block-image"  />
             </div>
           </div>
         </div>
